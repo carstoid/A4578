@@ -1,10 +1,6 @@
 import React from "react"
-import { Link } from "gatsby"
 
-import Layout from "../layouts/default"
-import Image from "../components/image"
-import SEO from "../components/seo"
-
+// empty index page is replaced w markdown
 const IndexPage = () => (
   <div>
   </div>

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import SlideHeader from '../components/slideHeader';
 import SlideBody from '../components/slideBody';
-import '../style/slide.css';
 
 class TemplateWrapper extends Component {
   constructor(props) {

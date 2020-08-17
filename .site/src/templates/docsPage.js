@@ -11,14 +11,19 @@ export default function Template({ data }) {
 
   return (
     <div
-      className="post"
+      className="col-span-3"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   )
-}    
+}
 
 export const pageQuery = graphql`
   query($slug: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {

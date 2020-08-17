@@ -85,7 +85,7 @@ exports.createPages = async ({ graphql, actions, createContentDigest, createNode
     });
   })
 
-  const docPages = result.data.allMarkdownRemark.edges.filter(e => e.node.fileAbsolutePath.includes('docs'))
+  const docPages = result.data.allMarkdownRemark.edges.filter(e => e.node.fileAbsolutePath.includes('pages'))
   // docpages.sort((a, b) => a.node.fileAbsolutePath > b.node.fileAbsolutePath ? 1 : -1)
   // const dNodes = docPages.flatMap((s) => s.node.html.split('<hr>').map((html) => ({
   //   node: s.node, html

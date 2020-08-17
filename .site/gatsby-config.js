@@ -1,11 +1,11 @@
 module.exports = {
-  pathPrefix: "/ud-digital-practice",
+  pathPrefix: "/gis-for-design-2020",
   siteMetadata: {
-    title: `Digital Practice Initiative`,
+    title: `GIS Lab for Architecture & Urban Design`,
     name: `Carsten Rodin`,
-    description: `Documentation site for UD Digital Practice`,
+    description: `Class site for design GIS lab`,
     author: `@carstoid`,
-    date: `July 9, 2020`,
+    date: `2020-08-00`,
   },
   plugins: [
     `gatsby-plugin-sharp`,
@@ -15,22 +15,22 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `markdown-pages`,
-        path: `../docs`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `slides`,
-        path: `../slides`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `assets`,
         path: `../assets`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `../pages`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `lectures`,
+        path: `../lectures`,
       },
     },
     {
@@ -56,18 +56,18 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `../assets/favicon.png`, // This path is relative to the root of the site.
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-manifest`,
+    //   options: {
+    //     name: `gatsby-starter-default`,
+    //     short_name: `starter`,
+    //     start_url: `/`,
+    //     background_color: `#663399`,
+    //     theme_color: `#663399`,
+    //     display: `minimal-ui`,
+    //     icon: `../assets/favicon.png`, // This path is relative to the root of the site.
+    //   },
+    // },
     `gatsby-plugin-postcss`
   ],
 }

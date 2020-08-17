@@ -1,42 +1,21 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import React from 'react';
+import { Link } from 'gatsby';
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+const Header = () => (
+  <div className='flex flex-col'>
+    <h1>GIS Lab for Architecture & Urban Design</h1>
+    <p>Columbia GSAPP, Fall 2020</p>
+    <Link activeClassName='link-active' to='/'>Home</Link>
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
+    <h2>Exercises</h2>
+    <Link activeClassName='link-active' to='/atlas'>Mapping Data</Link>
 
-Header.defaultProps = {
-  siteTitle: ``,
-}
+    <h2>Resources</h2>
+    <Link activeClassName='link-active' to='/atlas'>Atlas Precedents</Link>
+    <Link activeClassName='link-active' to='/'>Data</Link>
+    <Link activeClassName='link-active' to='/'>Home</Link>
+    
+  </div>
+);
 
-export default Header
+export default Header;
