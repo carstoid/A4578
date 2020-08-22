@@ -15,19 +15,19 @@ export default function SlideHeader({ name, title, date, pageNums }) {
 
   return (
     <header>
-      <div className="gradient-bg fixed top-0 right-0 w-full"></div>
+      <div className="fixed top-0 right-0 w-full"></div>
       {/* <a href="./1" className="text-white">
         {title}
       </a> */}
       <div></div>
       {/* <div className="text-red-600">DRAFT</div> */}
-      <time className="text-white">
+      <time className="text-black">
         {dt}
       </time>
       <div className="fixed bottom-0 left-0 m-4">
-        <a href="https://www1.nyc.gov/site/planning/index.page" title="DCP">
+        {/* <a href="https://www1.nyc.gov/site/planning/index.page" title="DCP">
           <img className="w-16" src="https://raw.githubusercontent.com/NYCPlanning/dcp-logo/master/dcp_logo.svg" alt="DCP"/>
-        </a>
+        </a> */}
       </div>
       <div className="fixed bottom-0 right-0 m-4 text-gray-600">
         {pageNums[0]} of {pageNums[1]}

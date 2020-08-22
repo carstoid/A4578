@@ -17,19 +17,19 @@ export default function Template({ data }) {
   )
 }
 
-export const pageQuery = graphql`
-  query($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        slug
-        title
-      }
-    }
-  }
-`
+// export const pageQuery = graphql`
+//   query($slug: String!) {
+//     site {
+//       siteMetadata {
+//         title
+//       }
+//     }
+//     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+//       html
+//       frontmatter {
+//         slug
+//         title
+//       }
+//     }
+//   }
+// `

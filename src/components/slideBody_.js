@@ -59,7 +59,7 @@ export default function slideBody({ html }) {
     const htmlNoImages = doc.toString();
 
     return (
-      <div className='w-full h-full grid grid-cols-2 grid-rows-1 grid-flow-row-dense gap-8 m-4'>
+      <div className='w-full h-full grid grid-cols-2 grid-rows-1 grid-flow-row-dense gap-8 m-4 border-solid border-4 border-gray-600'>
         <div
           className='flex flex-col justify-start items-start pt-24' 
           dangerouslySetInnerHTML={{ __html: htmlNoImages }}

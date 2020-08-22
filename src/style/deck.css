@@ -1,0 +1,12 @@
+html, body, #___gatsby, #gatsby-focus-wrapper {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.aspect-16-9 {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+}
