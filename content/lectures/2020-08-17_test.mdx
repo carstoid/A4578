@@ -5,6 +5,13 @@ date: 2020-05-10
 location: Space | Earth
 ---
 
+<!-- IMPORT LAYOUTS AND ADDITIONAL COMPONENTS TO INCLUDE -->
+import ImageRight from '../../src/layouts/slides/imageRight';
+import ImageAbove from '../../src/layouts/slides/imageAbove';
+import Centered from '../../src/layouts/slides/centered';
+
+<!-- END IMPORTS, BEGIN FIRST SLIDE -->
+
 # Portfolio 101
 
 How I built this site and how you can design, build and host your own.
@@ -18,17 +25,35 @@ Your site is your space on the net.
 
 ---
 
-<iframe src="https://player.vimeo.com/video/421580130" width="640" height="380" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+<Centered>
+  <iframe src="https://player.vimeo.com/video/421580130" width="640" height="380" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+</Centered>
 
 ---
 
-import TextImage from '../../src/layouts/slides/textImage'
+<ImageRight>
 
-<TextImage>
+This is an image from the tutorial.
 
-# Hello
+There are three steps to making it work:
 
-</TextImage>
+1. First step
+2. Second step
+3. Celebrate
+
+![](../assets/01_identify.jpg)
+
+</ImageRight>
+
+---
+
+<ImageAbove>
+
+This is an image from the tutorial.
+
+![](../assets/01_identify.jpg)
+
+</ImageAbove>
 
 ---
 

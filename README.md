@@ -8,3 +8,7 @@ Deploy to GitHub pages: from the `site-src` directory, run `npm run deploy`. Thi
 ##
 
 https://github.com/jxnblk/mdx-deck/tree/master/packages/gatsby-theme
+
+## To-Do
+
+- Worth it to use `gatsby-remark-images` or would be better to use `gatsby-remark-copy-linked-files`. Styling the former is very time-consuming, advantage is images are auto-optimized...

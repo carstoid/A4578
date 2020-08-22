@@ -29,10 +29,15 @@ module.exports = {
       options: {
         gatsbyRemarkPlugins: [
           // `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-unwrap-images`,
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 800,
+              disableBgImage: true,
+              disableBgImageOnAlpha: true,
+              linkImagesToOriginal: false,
+              backgroundColor: 'none',
             },
           },
         ],
@@ -70,18 +75,18 @@ module.exports = {
     //     ],
     //   },
     // },
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `gatsby-starter-default`,
-    //     short_name: `starter`,
-    //     start_url: `/`,
-    //     background_color: `#663399`,
-    //     theme_color: `#663399`,
-    //     display: `minimal-ui`,
-    //     icon: `../assets/favicon.png`, // This path is relative to the root of the site.
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `gis-2020`,
+        short_name: `gis`,
+        start_url: `/`,
+        // background_color: `#663399`,
+        // theme_color: `#663399`,
+        //display: `minimal-ui`,
+        icon: `content/assets/favicon.png`, // This path is relative to the root of the site.
+      },
+    },
     `gatsby-plugin-postcss`
   ],
 }

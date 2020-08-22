@@ -84,11 +84,11 @@ class Deck extends React.Component {
           {frontmatter.title && <title>{frontmatter.title}</title>}
         </Helmet>
         <div id='header'>
-          <div className='fixed top-0 left-0 m-2'>{frontmatter.title}</div>
-          <div className='fixed top-0 right-0 m-2'>{dateTime}</div>
-          <div className='fixed bottom-0 right-0 m-2'>{currentSlide}/{slides.length}</div>
+          <div className='small fixed top-0 left-0 m-2'>{frontmatter.title}</div>
+          <div className='small fixed top-0 right-0 m-2'>{dateTime}</div>
+          <div className='small fixed bottom-0 right-0 m-2'>{currentSlide}/{slides.length}</div>
         </div>
-        <div id='slideFrame' className='w-full h-full p-2 flex items-center justify-center'>
+        <div id='slideFrame' className='w-full h-full p-8 flex items-center justify-center'>
           <div className={`aspect-16-9 ${aspectPreviewClass}`}>
             <div className='aspect-content'>
               {slideMarkup}
