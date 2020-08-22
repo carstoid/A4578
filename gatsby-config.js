@@ -9,22 +9,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-sharp`,
-    // `gatsby-plugin-layout`,
-    // `gatsby-plugin-react-helmet`,
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `assets`,
-    //     path: `../assets`,
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `markdown-pages`,
-    //     path: `../pages`,
-    //   },
-    // },
+    `gatsby-remark-images`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -32,13 +17,36 @@ module.exports = {
         path: `${__dirname}/content/lectures/`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `assets`,
+        path: `${__dirname}/content/assets`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          // `gatsby-remark-copy-linked-files`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
+        ],
+      },
+    },
+    // `gatsby-plugin-layout`,
+    // `gatsby-plugin-react-helmet`,
     // {
-    //   resolve: "gatsby-plugin-page-creator",
+    //   resolve: `gatsby-source-filesystem`,
     //   options: {
-    //     path: `${__dirname}/content`,
+    //     name: `markdown-pages`,
+    //     path: `../pages`,
     //   },
     // },
-    `gatsby-plugin-mdx`,
     // `gatsby-transformer-sharp`,
     // {
     //   resolve: `gatsby-transformer-remark`,
