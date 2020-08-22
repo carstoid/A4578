@@ -43,6 +43,22 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `gis-2020`,
+        short_name: `gis`,
+        start_url: `/`,
+        // background_color: `#663399`,
+        // theme_color: `#663399`,
+        //display: `minimal-ui`,
+        icon: `content/assets/favicon.png`, // This path is relative to the root of the site.
+      },
+    },
+    `gatsby-plugin-postcss`
+  ],
+}
+
     // `gatsby-plugin-layout`,
     // `gatsby-plugin-react-helmet`,
     // {
@@ -75,18 +91,3 @@ module.exports = {
     //     ],
     //   },
     // },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gis-2020`,
-        short_name: `gis`,
-        start_url: `/`,
-        // background_color: `#663399`,
-        // theme_color: `#663399`,
-        //display: `minimal-ui`,
-        icon: `content/assets/favicon.png`, // This path is relative to the root of the site.
-      },
-    },
-    `gatsby-plugin-postcss`
-  ],
-}
