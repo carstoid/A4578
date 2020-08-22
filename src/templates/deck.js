@@ -19,9 +19,8 @@ const wrapper = props => {
   return <Deck {...props} slides={slides} />
 }
 
-const components = {
-  wrapper,
-}
+const components = { wrapper }
+// const shortcodes = { SlideTextImage }
 
 export default ({
   data: {
@@ -29,7 +28,9 @@ export default ({
   },
   ...props
 }) => {
-  const Component = props => <MDXRenderer {...props} children={body} />
+  const Component = props => {
+    return <MDXRenderer {...props} children={body} />
+  }
 
   return (
     <Component {...props} components={components} />

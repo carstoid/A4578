@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 // import Context from '../context'
 // import useDeck from '../hooks/use-deck'
 // import useSwipe from '../hooks/use-swipe'
@@ -13,10 +13,10 @@ export const Slide = ({ pageNum, current, slide, ...props }) => {
   //   preview,
   // }
 
-  const visibility = pageNum == current ? '' : 'hidden';
+  const visibility = pageNum === current ? '' : 'hidden';
 
   return (
-    <div className={visibility}>
+    <div className={`h-full w-full ${visibility}`}>
       {slide}
     </div>
   )

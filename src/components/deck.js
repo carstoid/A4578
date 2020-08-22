@@ -31,6 +31,7 @@ class Deck extends React.Component {
         this.setState({
           aspectPreview: !this.state.aspectPreview
         })
+        break;
       default:
         break;
     }
@@ -41,9 +42,9 @@ class Deck extends React.Component {
     const prevSlide = this.state.currentSlide;
     let nextSlide = prevSlide + increment;
 
-    if (nextSlide == slides.length + 1) {
+    if (nextSlide === slides.length + 1) {
       nextSlide = 1;
-    } else if (nextSlide == 0) {
+    } else if (nextSlide === 0) {
       nextSlide = slides.length;
     }
 
@@ -89,7 +90,9 @@ class Deck extends React.Component {
         </div>
         <div id='slideFrame' className='w-full h-full p-2 flex items-center justify-center'>
           <div className={`aspect-16-9 ${aspectPreviewClass}`}>
-            {slideMarkup}
+            <div className='aspect-content'>
+              {slideMarkup}
+            </div>
           </div>
         </div>
       </div>
