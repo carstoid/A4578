@@ -1,7 +1,9 @@
 import React from 'react';
+import { Swipeable } from 'react-swipeable';
 import { format } from 'date-fns';
 import { Helmet } from 'react-helmet';
 import Slide from './slide';
+import SwipeControls from './swipeControls';
 
 const dateFormatted = () => format(new Date(), 'MM/dd/yyyy hh:mm');
 
@@ -13,6 +15,22 @@ class Deck extends React.Component {
       currentSlide: 1,
       aspectPreview: false,
     };
+  }
+
+  handleClick = (e) => {
+    //this.advance(1);
+  }
+
+  handleSwipe = (e) => {
+    console.log(e)
+    switch(e.dir) {
+      case 'Left':
+      case 'Up':
+        this.advance(-1);
+        break;
+      default:
+        break;
+    }
   }
 
   handleKeyDown = (e) => {
@@ -63,38 +81,45 @@ class Deck extends React.Component {
 
     // register event listeners
     document.addEventListener('keydown', this.handleKeyDown);
+    document.addEventListener('click', this.handleClick);
   }
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKeyDown);
+    document.removeEventListener('click', this.handleClick);
   }
 
   render() {
     const { dateTime, currentSlide, aspectPreview } = this.state;
     const { slides, _frontmatter: frontmatter } = this.props;
 
+    const config = {
+      trackTouch: true
+    }
+
     const slideMarkup = slides.map((slide, i) => 
       <Slide key={i} pageNum={i + 1} current={currentSlide} slide={slide}/>
     );
-    const aspectPreviewClass = aspectPreview ? 'border-2 border-red-400' : ''; 
+    const aspectPreviewClass = aspectPreview ? 'border-2 border-black' : ''; 
 
     return (
-      <div id='deck-root' className='flex justify-center items-center h-full w-full'>
+      <div id='deck-root' className='flex justify-center items-center h-full w-full xl:text-3xl lg:text-lg md:text-base sm:text-xs'>
         <Helmet>
           {frontmatter.title && <title>{frontmatter.title}</title>}
         </Helmet>
         <div id='header'>
-          <div className='small fixed top-0 left-0 m-2'>{frontmatter.title}</div>
-          <div className='small fixed top-0 right-0 m-2'>{dateTime}</div>
-          <div className='small fixed bottom-0 right-0 m-2'>{currentSlide}/{slides.length}</div>
+          <small className='small fixed top-0 left-0 m-2'>{frontmatter.title}</small>
+          <small className='small fixed top-0 right-0 m-2'>{dateTime}</small>
+          <small className='small fixed bottom-0 right-0 m-2'>{currentSlide}/{slides.length}</small>
         </div>
-        <div id='slideFrame' className='w-full h-full p-8 flex items-center justify-center'>
+        <div id='slide-frame' className='w-full h-full xl:p-32 sm:p-4 flex items-center justify-center'>
           <div className={`aspect-16-9 ${aspectPreviewClass}`}>
             <div className='aspect-content'>
               {slideMarkup}
             </div>
           </div>
         </div>
+        <SwipeControls advance={this.advance}/>
       </div>
     )
   }

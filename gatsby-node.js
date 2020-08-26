@@ -12,19 +12,6 @@ let contentPath
 const deckTemplate = require.resolve(`./src/templates/deck`)
 const pageTemplate = require.resolve('./src/templates/page')
 
-// exports.onPreBootstrap = ({ store }, opts = {}) => {
-//   const { program } = store.getState()
-
-//   basePath = opts.basePath || `/`
-//   contentPath = opts.contentPath || `decks`
-
-//   if (opts.cli) return
-//   const dirname = path.join(program.directory, contentPath)
-//   mkdirp.sync(dirname)
-
-//   debug(`Initializing ${dirname} directory`)
-// }
-
 const mdxResolverPassthrough = fieldName => async (
   source,
   args,
@@ -113,7 +100,7 @@ exports.createPages = async ({ graphql, actions, reporter, pathPrefix }) => {
   const pages = allMarkdownRemark.edges // could filter by path, edges.filter(e => e.node.fileAbsolutePath.includes('pages'));
 
   decks.forEach(({ node }, index) => {
-    const slug = [pathPrefix, 'lectures', node.slug].filter(Boolean).join('/') // or to manually specify for each, node.frontmatter.slug;
+    const slug = [pathPrefix, 'slides', node.slug].filter(Boolean).join('/') // or to manually specify for each, node.frontmatter.slug;
     const matchPath = [slug, '*'].join('/')
 
     createPage({

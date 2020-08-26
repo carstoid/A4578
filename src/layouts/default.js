@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Header from '../components/header'
+import Nav from '../components/nav'
 import '../style/main.css'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, siteMetadata }) => {
     return(
         <div id='root' className="grid grid-cols-4 gap-8 p-8">
-          <Header />
+          <Nav siteMetadata={siteMetadata} />
           {children}
         </div>
     )

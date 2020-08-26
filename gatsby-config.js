@@ -1,9 +1,9 @@
 module.exports = {
   pathPrefix: "/gis-for-design-2020",
   siteMetadata: {
-    title: `GIS Lab for Architecture & Urban Design`,
-    name: `Carsten Rodin`,
-    description: `Class site for design GIS lab`,
+    title: `Page Title`,
+    name: `Author`,
+    description: `Brief description of your site`,
     author: `@carstoid`,
     date: `2020-08-00`,
   },
@@ -13,8 +13,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `lectures`,
-        path: `${__dirname}/content/lectures/`,
+        name: `slides`,
+        path: `${__dirname}/content/slides/`,
       },
     },
     {
@@ -35,7 +35,6 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         gatsbyRemarkPlugins: [
-          // `gatsby-remark-copy-linked-files`,
           `gatsby-remark-unwrap-images`,
           {
             resolve: `gatsby-remark-images`,
@@ -78,23 +77,9 @@ module.exports = {
         name: `gis-2020`,
         short_name: `gis`,
         start_url: `/`,
-        // background_color: `#663399`,
-        // theme_color: `#663399`,
-        //display: `minimal-ui`,
         icon: `content/assets/favicon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-postcss`
   ],
 }
-
-    // `gatsby-plugin-layout`,
-    // `gatsby-plugin-react-helmet`,
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `markdown-pages`,
-    //     path: `../pages`,
-    //   },
-    // },
-    // `gatsby-transformer-sharp`,

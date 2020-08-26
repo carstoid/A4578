@@ -3,11 +3,12 @@ import { graphql } from 'gatsby';
 import Layout from '../layouts/default';
 
 export default function Template({ data }) {
-  const { markdownRemark } = data
+  const { markdownRemark, site } = data
+  const { siteMetadata } = site
   const { html } = markdownRemark // frontmatter is available here too
 
   return (
-    <Layout>
+    <Layout siteMetadata={siteMetadata}>
       <div className="col-span-3" dangerouslySetInnerHTML={{ __html: html }} />
     </Layout>
   )
