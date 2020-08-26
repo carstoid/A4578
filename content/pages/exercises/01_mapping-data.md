@@ -4,8 +4,6 @@ date: 2020-08-15
 slug: /exercises/01_mapping-data
 ---
 
-## Exercise 1: Mapping Data
-
 Mapping data serves multiple purposes. More than the graphic and geographic visualization of spatial information, it is a critical, analytical, and interpretive act. Mapping and GIS-based visualization contribute to knowledge formation, decision making, and community representation. Cartographic choices can both reinforce and challenge how the city is seen, how its spaces are understood, and how (and by whom) its resources are accessed. The map carries the implied weight and trust of expertise. When that map also contains quantitative and/or statistical information, it is often read as “scientific truth.” As such, mapping data is a powerful tool in urban planning—to inform the decisions planners make, to persuade in support of advocacy efforts, and to clarify and explain the spatial experiences and priorities of different groups.
 
 After completing this exercise, students will have:
@@ -25,30 +23,7 @@ Further, students should be able to:
 - Export selected features to a new feature class
 - Classify quantitative information within GIS software
 
-## Part 1 | Reading Response: A Map
-
-Importantly, as we begin creating data-driven maps and other spatial data visualizations, a necessary step is to become critical readers of maps—consistently evaluating their arguments and the ways in which those arguments are supported or undermined by their (re) presentation. Just like written text, the efficacy of a map’s communication is determined by the graphic language used, its clarity, its hierarchy and visual syntax, and so on.
-
-As such, the first deliverable of the Mapping Data exercise is a brief reading response assignment commenting and critiquing on a map of your choice.
-Select a map. This map can be printed or digital, made for any purpose, and of any age. It must be a static (not animated, not interactive), two-dimensional, planimetric map. If your map is printed, you will have to acquire a scanned image of it. Think about the topics and questions below before choosing your map. (Of course, if it is not designed in such a way for you to discuss its composition in the terms outlined below, then it is probably not a good choice for this assignment.)
-
-
-
-Claim your map! Each student should select a different map to discuss—on a first come, first served basis. To claim your map, comment on the Discussion Thread called “Mapping Data: Part 1.” In that comment, embed an image of the map, and include the map’s bibliographic citation. Check that no one else has already claimed your map. If you are ready to write
-your Reading Response, you can add the text to this comment. If not, reply to your original comment with the text of your Reading Response when you are ready to submit.
-Your reading response should be no more than 250 words. Consider some of the following questions when thinking about the map. Please note that the reading response should not simply answer these questions nor should it describe the map. Instead, please focus your response around your critical and careful reading of the map, supported with description where necessary. (In other words, these questions are to help you choose and evaluate the map.)
-
-1. Is it a reference, analytical, or thematic map? How do you know?
-2. Who is its intended audience? How do you know this? Is it implied in the design of the map (be specific)?
-3. What are the scale and extents of the map? Does its framing seem appropriate and effective for its intended purpose? How so?
-4. Does the map display quantitative or qualitative information? If quantitative, consider whether and how the data is classified. If qualitative, consider whether and how the data is categorized. Is the reasoning behind these choices clear to the reader? Is the map designed to be read as authoritative, interpreted, experiential, generalizable, activist, ...? (And how can you tell?)
-5. What other information is present (titles, descriptive text, infographics, data sources)? How do these contribute to communicating the overall narrative, argument, or purpose of the map?
-
-### Extra Credit
-
-For extra credit, you can (now or throughout the semester) post additional responses or critiques following the same guidelines and directions listed above to the Discussion Thread titled “Mapping Data: Extra Credit Maps.” For credit, you will need to post an image of the map, its full bibliographic citation, as well as a <250-word critique.
-
-## Part 2 | Basic Data Types: Representing the Urban Condition
+## Basic Data Types: Representing the Urban Condition
 
 ### Mapping Project
 
@@ -59,23 +34,33 @@ Urbanization has become a planetary phenomenon that weaves the terrirory of the 
 Download and unzip the exercise package called “01_MappingData_Arch-UD”, saving it to your working drive.
 TIP: It is highly suggested that you work on either a high-capacity (and fast) external hard drive or your computer’s local scratch drive. GIS software works by “linking” to data layer sources, constantly reading those layers wherever they are stored. Thus, working on a small, slow flash drive can noticeably slow down your processing speed. Instead, copy your files to the local drive and remember to save your work to your remote storage (whether a flash drive, external hard drive, or cloud storage) after each working session.
 
-WORKING WITH SHAPEFILES:
+#### Working With Shapefiles
+
 Before we begin working with the data, let’s examine the folder’s contents.
+
 Open Windows Explorer [Windows + e], and navigate to the “...\01_MappingData\00_DATA\ vector.”
+
 Notice that there are several files with the same names and different extensions. These are the components of an shapefile, a standard GIS vector file format containing exactly one feature class, which GIS software can read as a single entity.
+
 While shapefiles vary, they all contain three necessary files types:
-.shp The geometric information or “shapes.” The basic feature types are points, polylines, or polygons.
-.dbf A table of attribute information, qualitative or quantitative, corresponding to the features in the .SHP file.
-.shx An shape index file that stores the index information for the feature geometry.
+
+- **.shp** – The geometric information or “shapes.” The basic feature types are points, polylines, or polygons.
+- **.dbf** – A table of attribute information, qualitative or quantitative, corresponding to the features in the .shp file.
+- **.shx** – A shape index file that stores the index information for the feature geometry.
+
 Additionally, several shapefiles may have other component files. Primary files types (for our use) include:
-.prj Coordinate system and projecting information corresponding to the geometric features.
-.xml The shapefile’s metadata.
-You might notice several others. If you would like to investigate the list of shapefile extension
-file types, consult the ESRI ArcGIS Resources list here.
+
+- **.prj** Coordinate system and projecting information corresponding to the geometric features.
+- **.xml** The shapefile’s metadata.
+
+You might notice several others. If you would like to investigate the list of shapefile extension file types, consult the ESRI ArcGIS Resources list here.
+
 Without question, GIS data can be cumbersome (and these shapefiles represent some of the least complex GIS data types). Thus, we will work with ArcCatalog when using ESRI’s ArcGIS. ArcCatalog is a file directory program (like Windows Explorer or Apple’s Finder) specifically designed for GIS files. It will recognize GIS data as such and package the multiple related files together. It will also allow you to preview your data before adding it to a working ArcMap project.) Close Windows Explorer.
-Open ArcCatalog by clicking through the “Start Menu > ArcGIS > ArcCatalog.” Click the “Connect to Folder” button (left) and navigate to (and highlight) the \01_MappingData\ folder.
-This will establish the “01_MappingData” folder as a working directory for us, giving us access to the data in its subfolders. (Establishing which directories are “working directories” is a common feature of many data-related software packages.)
+
+Open ArcCatalog by clicking through the “Start Menu > ArcGIS > ArcCatalog.” Click the “Connect to Folder” button (left) and navigate to (and highlight) the \01_MappingData\ folder. This will establish the “01_MappingData” folder as a working directory for us, giving us access to the data in its subfolders. (Establishing which directories are “working directories” is a common feature of many data-related software packages.)
+
 When you have selected the folder, click OK.
+
 Notice that once you have connected to the folder, it is present in the left panel of the ArcCatalog interface, called the Catalog Tree. From here, you can inspect its GIS-related contents using the three tabs in the right panel: Contents, Preview, and Description.
 
 ## Getting Started
@@ -97,8 +82,10 @@ Notice primarily that the long list of files we saw in Windows Explorer is neatl
 DATA SOURCES:
 To begin, we will use data compiled by the Esri Data and Maps group.
 LAUNCH ARCMAP:
-Open Arcmap by clicking through the “Start menu > ArcGIS > ArcMap.” If you are prompted to choose an ArcMap project to open, you can either chose a New Blank Map or click Cancel to dismiss the initial dialogue box.
+Open Arcmap by clicking through the “Start menu > ArcGIS > ArcMap.” If you are prompted to choose an ArcMap project to open, you can either chose a New Blank Map or click Cancel to dismiss the initial dialog box.
+
 The project file is effectively a space for analysis and composition of various GIS data layers. Conceptually, it is useful to remember that the “project” file is not the “map,” nor does it contain the data used within the project. Rather, within the project file, data sets can be layered, analyzed, created, and edited. Multiple projects may reference or include a single dataset without duplicating the data. As a result, changes made to a dataset in one ArcMap project are reflected in the other projects linking to it.
+
 Take a moment to familiarize yourself with the ArcMap interface. At a minimum, you should see the Standard Toolbar and the Tools Toolbar docked at the top of the interface. If you
 do not see them, you can access your toolbars by right-clicking in the toolbar area of the interface or by clicking through “Windows > Toolbars.” (You can dock a floating toolbar by dragging and dropping it in the toolbar areas on the top, bottom, or sides of the interface.)
 
@@ -108,14 +95,16 @@ Standard Toolbar
 Tools Toolbar
 ![tools toolbar icons](../../assets/01_tools-toolbar.jpg)
 
-### ADD DATA
+### Add Data
 
 To add a data layer to your project, click the Add Data button, or right-click on “Layers” and choose “Add Data...”
 
 ![add layer icon](../../assets/01_icon-add-layer.jpg)
 
 In the Add Data dialogue box, navigate to “...\00_Data\vector” folder. (You may need to establish the “01_MappingData” folder as a working directory once again by clicking the Connect to Folder button.)
+
 Select the “World_Cities.shp”, and click “Add.”
+
 Notice the points representing cities populate the data frame. Each feature in the feature class is symbolized with the same arbitrary symbol/color. When hovering over data frame, examine the latitude and longitude coordinates of your mouse cursor in the lower right corner.
 
 ![world city points](../../assets/01_world-city-points.jpg)
@@ -129,7 +118,7 @@ It’s easy to manually set the desired coordinate system of the data frame. Rig
 
 ![add layer icon](../../assets/01_data-frame-coordinate-system.jpg)
 
-## SAVE YOUR PROJECT
+## Save Your Project
 
 Before we move on, let’s save our ArcMap project.
 
@@ -139,7 +128,7 @@ To save relative path names for your data layers, click through “File > Map Do
 
 ![map document properties, relative paths dialog](../../assets/01_map-document-properties.jpg)
 
-## THE ATTRIBUTE TABLE
+## The Attribute Table
 
 Recall that each feature in a feature class is represented in geometric and in tabular form. In this case, we have point features (each Wi-Fi hotspot represented as a point), and each point corresponds to an entry in a data table—an attribute table containing attribute information per feature.
 
@@ -157,7 +146,7 @@ Additionally, notice that immediately beneath the table, the panel includes text
 
 ![attribute table with feature selected](../../assets/01_attribute-table-selected.jpg)
 
-> ✍️ 2.1 – Interactively select the feature selected in the image above from the World_Cities shapefile’s attribute table. What is the population of that city? (HINT: Look through the information available in the table).
+**✍️ 2.1 – Interactively select the feature selected in the image above from the World_Cities shapefile’s attribute table. What is the population of that city? (HINT: Look through the information available in the table).**
 
 Clear your selected feature(s) by clicking the Clear Selected Features button on the Table Panel or on the Tools toolbar, or navigate to menu item “Selection” and choose “Clear Selected Features.”
 
@@ -179,9 +168,9 @@ cover georeferenced raster files in greater detail in future exercises. For now,
  Map Design
 Using the “Add Data” button and dialogue box, add World_Countries_(Generalized).shp, World_Roads.shp, World_Railroads.shp, and World_Urban_Areas.shp from the “00_DATA\ vector” folder, and NightLights_2016_3km_gray_geo.tif from the “00_DATA\raster” folder.
 
-> ✍️ Q 2.2 – How many features are included in the World\_Urban\_Areas feature class?
+**✍️ Q 2.2 – How many features are included in the World\_Urban\_Areas feature class?**
 
-## LAYER ORDER
+## Layer Order
 
 Once again, each of the layers will be arbitrarily assigned a single color symbol. Also, depending on the order in which your new layers are added to the project, you may not be able to easily see each of them. You can rearrange your data layers’ order by clicking and dragging the layer names in the ToC (be sure that the “List by Drawing Order” option is selected in the ToC Panel).
 
@@ -193,7 +182,7 @@ World Roads, World Countries, Earth at Night. You can toggle the visibility of l
 
 ## Map Design
 
-## SYMBOLOGY
+## Symbology
 
 We are now entering the design phase of our first mapping project. First, we will change the appearance of the World Cities Layer. Right-click on the layer name in the ToC and click Properties to access the Layer Properties dialogue box.
 
@@ -235,7 +224,7 @@ Set the Border to “None” and Background color to black. Click “OK.”
 
 Finally, turn on the World Countries layer’s visibility by rechecking the box next to the layer’s name in the ToC. Change the countries’ appearance on the map by changing its symbol. Give the features dark gray fill color and no visible outline.
 
-## INTERACTIVE SELECTION
+## Interactive Selection
 
 Next, we will display the names of the most populous cities on the map (with populations greater than 5 million). In order to do so, we will first select the features representing those cities (population rank = 1). Open the layer’s attribute table. Right-click on “POP_RANK” and choose “Sort Ascending.” Notice that the World Cities features are now sorted by their population rank from 1 to 7 (by default, features are sorted by their unique object IDs in the “FID” field).
 
@@ -247,7 +236,7 @@ Interactively select all features with population rank 1 by clicking its rows in
 
 ## Selection Methods
 
-## SELECT BY ATTRIBUTES
+### Select By Attributes
 
 Another selection technique is to directly query the Attribute Table based on the fields and values within the database. We will select the same features one more time using this method. Clear your selection using the Clear Selection button.
 
@@ -273,7 +262,7 @@ Verify that your query expression is correct and click “OK.” Once again, sam
 
 ## Labeling Features
 
-CREATING A NEW LAYER:
+### Creating a New Feature
 
 In order to add names of the selected cities on the map, we will create a new layer containing only the selected features.
 
@@ -290,7 +279,7 @@ With “World_Largest_Cities” Layer Properties window still open, click on the
 
 ![layer properties dialog](../../assets/01_layer-properties-labels.jpg)
 
-## Working with Imagery: RASTER DATA
+## Working with Raster Data
 
 Considering our original mapping challenge – respresenting urban condition – completing a map with abstract dots representing world’s major cities may not be the most original approch to tackle this. We will hence shift our focus to other data we’ve added to the scene and consider alternative ways to represent urbanization.
 
@@ -302,7 +291,7 @@ Your map should now dispay the names of the most populous cities within the map.
 
 ![world cities labeled on map](../../assets/01_labeled-cities.jpg)
 
-> ✍️ Q 2.3: Open the “World\_Largest\_Cities” Attribute Table. How many cities are in the feature class (total of those with the pupulation rank value of 1)? What percentage of the total number of World Cities have the poulation rank value of 1?
+**✍️ Q 2.3: Open the “World\_Largest\_Cities” Attribute Table. How many cities are in the feature class (total of those with the pupulation rank value of 1)? What percentage of the total number of World Cities have the poulation rank value of 1?**
 
 Right-click NightLights and choose “Properties...” Click on the Symbology tab. A slightly different dialogue box will appear from the one that we’re used to when working with shapefiles. There are several different methods of rendering raster data. We will use “Stretched.” The Stretched renderer displays continuous raster cell values across a gradual ramp of colors.
 
@@ -316,7 +305,7 @@ You should by now be familiar with basic GIS data types, selection techniques, a
 
 ![page and print setup dialog](../../assets/01_raster.jpg)
 
-## LAYOUT VIEW
+## Layout View
 
 The ArcMap interface’s data view is useful when conducting analysis. When we need to compose a map, we must switch interfaces to the Layout View. Using the buttons on the lower left of the data frame, toggle between Data View and Layout View.
 
@@ -336,7 +325,7 @@ Resize and position your data frame on the page, zooming and panning to desired 
 
 ![map layout view](../../assets/01_eur-raster-layout.jpg)
 
-### ADDING MAP ELEMENTS
+### Adding Map Elements
 
 For our purposes, most maps we produce in these exercises is expected to include the following map elements:
 
@@ -361,7 +350,7 @@ TIP: You can adjust the values in your scale bar by resizing it within the layou
 
 ![scale bar format dialog](../../assets/01_scale-line-properties-format.jpg)
 
-## EXPORTING A MAP
+## Exporting A Map
 
 There are several file type options for exporting a map from the Layout. Saving to a vector format (EPS, AI, etc) will preserve the vector geometry of your layers for further editing. Given that you also have a imagery on your map, you might consider exporting only the raster data of the map as JPG or TIFF and compiling them with vector data in another program.
 
