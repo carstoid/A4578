@@ -3,3 +3,32 @@
 @tailwind utilities;
 
 /* overrides to tailwind, applies to all pages */
+
+/* #page-container {
+  background: #b2b1ac;
+} */
+
+.link-active {
+  font-weight: bold;
+}
+
+/* TABLES */
+
+table {
+  margin-bottom: 1em;
+}
+
+th, td {
+  vertical-align: top;
+  text-align: left;
+  border-bottom: 1px solid black;
+  padding-right: 1em;
+}
+
+td:last-child {
+  padding-right: 0;
+}
+
+img {
+  margin-bottom: 1em;
+}

@@ -1,9 +1,9 @@
 module.exports = {
   pathPrefix: "/gis-for-design-2020",
   siteMetadata: {
-    title: `Page Title`,
-    name: `Author`,
-    description: `Brief description of your site`,
+    title: `GIS Lab for Architecture & Urban Design`,
+    name: `Carsten Rodin`,
+    description: `Exercises & resources for Arch/UD Lab Sections`,
     author: `@carstoid`,
     date: `2020-08-00`,
   },

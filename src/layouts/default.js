@@ -5,9 +5,11 @@ import '../style/main.css'
 
 const Layout = ({ children, siteMetadata }) => {
     return(
-        <div id='root' className="grid grid-cols-4 gap-8 p-8">
+        <div id='page-container' className="grid grid-cols-6 gap-8 p-8 text-md min-h-full">
           <Nav siteMetadata={siteMetadata} />
-          {children}
+          <div className=' col-span-4 col-start-3'>
+            {children}
+          </div>
         </div>
     )
 }
