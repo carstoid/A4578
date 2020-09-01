@@ -1,5 +1,6 @@
 import React from 'react';
 import { Swipeable } from 'react-swipeable';
+import { globalHistory } from '@reach/router';
 import { format } from 'date-fns';
 import { Helmet } from 'react-helmet';
 import Slide from './slide';
@@ -17,12 +18,16 @@ class Deck extends React.Component {
     };
   }
 
+  getLocation = () => {
+    const {hash} = globalHistory.location;
+    return hash;
+  }
+
   handleClick = (e) => {
     //this.advance(1);
   }
 
   handleSwipe = (e) => {
-    console.log(e)
     switch(e.dir) {
       case 'Left':
       case 'Up':
@@ -69,9 +74,16 @@ class Deck extends React.Component {
     this.setState({
       currentSlide: nextSlide
     })
+    window.location.hash = nextSlide;
   }
 
   componentDidMount() {
+    // check for slide number and set
+    const hash = this.getLocation().replace('#', '');
+    this.setState({
+      currentSlide: parseInt(hash)
+    })
+
     // auto-advance current time
     setInterval(() => {
       this.setState({
@@ -124,5 +136,7 @@ class Deck extends React.Component {
     )
   }
 }
+
+
 
 export default Deck;
