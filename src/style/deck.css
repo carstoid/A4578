@@ -78,3 +78,9 @@ ul {
   box-shadow: none;
   background: none;
 }
+
+/* CANVAS */
+
+canvas {
+  outline: none;
+}
