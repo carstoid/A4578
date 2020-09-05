@@ -30,6 +30,9 @@ const Blocks = ({path}) => {
   const { scene } = useLoader(GLTFLoader, path)
   const group = useRef()
 
+  // need to be able to manipulate this property to control morphing
+  // scene.children[0].morphTargetInfluences[0] = 0.5;
+
   return (
     <group ref={group} dispose={null}>
       <primitive object={scene} />
