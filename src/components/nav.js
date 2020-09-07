@@ -1,17 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-const Header = ({ siteMetadata }) => {
-  const { title } = siteMetadata
-
-  return (
-    <div className='flex flex-col fixed col-span-2'>
-      <b>{title}</b>
-      <br/>
-      <span>A4578-3 & 4</span>
-      <span>Columbia GSAPP</span>
-      <span>Fall 2020</span>
-      <br/>
+const Nav = () => (
+    <div className='flex flex-col items-start col-span-2'>
       <Link activeClassName='link-active' to='/'>Home</Link>
       <br/>
       <b>Exercises</b>
@@ -23,7 +14,6 @@ const Header = ({ siteMetadata }) => {
       <Link activeClassName='link-active' to='/atlas'>Atlas Precedents</Link>
       <Link activeClassName='link-active' to='/data'>Data</Link>
     </div>
-  )
-};
+);
 
-export default Header;
+export default Nav;

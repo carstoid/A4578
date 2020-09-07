@@ -1,5 +1,4 @@
 import React from 'react';
-import { Swipeable } from 'react-swipeable';
 import { globalHistory } from '@reach/router';
 import { format } from 'date-fns';
 import { Helmet } from 'react-helmet';
@@ -104,10 +103,6 @@ class Deck extends React.Component {
   render() {
     const { dateTime, currentSlide, aspectPreview } = this.state;
     const { slides, _frontmatter: frontmatter } = this.props;
-
-    const config = {
-      trackTouch: true
-    }
 
     const slideMarkup = slides.map((slide, i) => 
       <Slide key={i} pageNum={i + 1} current={currentSlide} slide={slide}/>

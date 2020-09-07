@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect, Suspense } from 'react';
-import * as THREE from 'three';
+import React, { useRef, Suspense } from 'react';
+//import * as THREE from 'three';
 import { Canvas, useFrame, extend, useThree, useLoader } from 'react-three-fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';

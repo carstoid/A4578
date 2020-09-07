@@ -2,14 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
-/* overrides to tailwind, applies to all pages */
+:root {
+  --off-white: #dfdfde;
+}
+#page-container {
+  /* background: var(--off-white); */
+}
 
-/* #page-container {
-  background: #b2b1ac;
+/* .page-body {
+  background: white;
+  padding: 1em;
 } */
 
-.link-active {
+/* TYPE */
+
+.metadata {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8em;
+}
+
+.page-title {
+  font-size: 2.074em;
   font-weight: bold;
+  vertical-align: text-bottom;
+}
+
+.link-active {
+  background: lime;
+  font-weight: bold;
+}
+
+.page-outline h1, .page-outline h2, .page-outline h3 {
+  background: var(--off-white);
+}
+
+.page-body div {
+  margin-bottom: 1em;
+}
+
+.page-body a {
+  color: blue;
+  text-decoration: underline;
+  text-decoration-color: blue;
+}
+
+.page-body h2 {
+  font-weight: bold;
+}
+
+.page-body h3 {
+  font-weight: bold;
+  border-bottom: 3px solid black;
+}
+
+code {
+  background: var(--off-white);
+  padding: 0.125em;
+  border-radius: 0.25em;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95em;
+}
+
+.tip {
+  background: #e9e8e1;
+  color:#7c7c78;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+
+.question {
+  margin-left: 3px;
+  border-left: 3px solid black;
+  padding-left: 1em;
+  margin-bottom: 1em;
 }
 
 /* TABLES */
