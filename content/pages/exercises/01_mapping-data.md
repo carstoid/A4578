@@ -61,7 +61,7 @@ Urbanization has become a planetary phenomenon that weaves the terrirory of the 
 
 ### Setup
 
-Download and unzip the [exercise package](/downloads/mapping-data.zip) to a convenient location on your computer.
+Download and unzip the [exercise package](/downloads/mapping_data.zip) to a convenient location on your computer.
 
 As always, it's important to back up your work. If you're not doing so already, use the Google [Backup and Sync](https://www.google.com/intl/en-GB_ALL/drive/download/backup-and-sync/) utility to set up automatic backups to your Columbia Google Drive account.
 
@@ -252,31 +252,15 @@ Open the Attribute Table and scroll horizontally all the way to the right. You'l
 
 ## Working with Raster Data
 
-<!-- Considering our original mapping challenge – respresenting urban condition – completing a map with abstract dots representing world’s major cities may not be the most original approch to tackle this. We will hence shift our focus to other data we’ve added to the scene and consider alternative ways to represent urbanization. -->
+We can add **raster** data to the map the same way we do vectors. Click the Add Data button and navigate to the `data/raster` folder. Add `night-lights.tif` to the map.
 
-We can add raster data to the map the same way we do vectors. 
+ArcMap will ask if you want to create pyramids for the layer, click Yes using the default settings. You should see what looks like a black-and-white world map appear on screen.
 
-Toggle all layers off except “NightLights_2016_3km_gray_geo.tif.” This is the only raster dataset we are working with in this exercise. We will work with rasters in greater detail in future exercises. For now, bare in mind that a raster consists of a matrix of cells (or pixels) organized into rows and columns (or a grid) where each cell contains a value representing information, such as elevation or the amount of light emmitteed at night-time.
+Unlike vector data, which represents geometry as **discrete** objects in space, raster data represents a **continuous** surface of geographic territory. Instead of object properties like names, populations and nicknames, the attributes of raster data are represented as changes in a variable across the surface. We call these variables **bands** and they are always encoded numerically. The structure of a raster is the same as any other digital image, except the boundaries of each pixel have specific geographic locations. To underscore this difference, we call them **cells** in this class instead of pixels. We'll get a more thorough introduction to raster data in Week 5.
 
-Night-Time Lights imagery has been embraced by a large number of institutions as a proxy for urbanization, density, and economic growth, among others. This is highly debatable, but we will nevertheless proceed assuming the data represents areas of concentrated urbanization.
+![open attribute table](../../assets/exercises/making-data/add-raster.gif)
 
-Your map should now dispay the names of the most populous cities within the map.
-
-![world cities labeled on map](../../assets/01_labeled-cities.jpg)
-
-Right-click NightLights and choose “Properties...” Click on the Symbology tab. A slightly different dialogue box will appear from the one that we’re used to when working with shapefiles. There are several different methods of rendering raster data. We will use “Stretched.” The Stretched renderer displays continuous raster cell values across a gradual ramp of colors.
-
-Choose the Stretch Type “Minimum-Maximum.” Click “Display Background Value” and leave value at “0.” Right-click on the Color Ramp and choose “Properties...” Set “Color 2” to yellow and click “OK” all the way out (feel free to experiment more with these settings).
-
-Next, turn off world cities layer and urban areas layer. Right-click “World_Urban_Areas” and open Attribute Table. Notice that only ordinal data (rank) is available should you want to choose colors by it. Close Attribute Table and right-click “World_Urban_Areas” again. Choose “Properties...” and click on Symbology Tab. Use the symbol swatch to set the fill color to desired color. Set the outline color to “No Color.”
-
-Turn on railroads layer. Right-click “World_Railroads” and choose “Properties...” Click on the Symbology tab and use the symbol swatch to choose color and line weights. Repeat the steps for “World_Roads” layer. HINT: You might want to represent roads, railroads, and urban areas as componests of a single system, and hence, assign similar color values to all three layers.
-
-You should by now be familiar with basic GIS data types, selection techniques, and symbology methods.
-
-![page and print setup dialog](../../assets/01_raster.jpg)
-
-## Map Design
+<!-- ## Map Design
 
 Having familiarized ourselves with the information in the World Cities shapefile, we can now set up our map by including other layers and start experimenting with map design. Given the mapping challenge we are trying to tackle, what other geographic features can we use as a proxy for representing urban condition?
 
@@ -294,6 +278,8 @@ cover georeferenced raster files in greater detail in future exercises. For now,
 
 Using the “Add Data” button and dialogue box, add World_Countries_(Generalized).shp, World_Roads.shp, World_Railroads.shp, and World_Urban_Areas.shp from the “00_DATA\ vector” folder, and NightLights_2016_3km_gray_geo.tif from the “00_DATA\raster” folder.
 
+Turn on railroads layer. Right-click “World_Railroads” and choose “Properties...” Click on the Symbology tab and use the symbol swatch to choose color and line weights. Repeat the steps for “World_Roads” layer. HINT: You might want to represent roads, railroads, and urban areas as componests of a single system, and hence, assign similar color values to all three layers.
+
 <div class='question'><strong>1.3</strong> How many features are included in the World\_Urban\_Areas feature class?**</div>
 
 ### Layer Order
@@ -308,8 +294,6 @@ World Roads, World Countries, Earth at Night. You can toggle the visibility of l
 
 ### Labeling Features
 
-<!-- ### Creating a New Feature -->
-
 Right-click on “World_Largest_Cities” and choose “Properties.” Click on the Symbology tab (Features/Single Symbol) and using the Symbol selector and Symbol Property Editor set both the Color and Outline to “No Color.” This operation will make the layer invisible on out map.
 
 Label text strings are derived from one or more feature attributes. Labels are dynamic, so if feature attribute values change, the labels also change. In our case, will label features with text strings derived “CITY_NAME” field.
@@ -319,6 +303,15 @@ With “World_Largest_Cities” Layer Properties window still open, click on the
 
 ![layer properties dialog](../../assets/01_layer-properties-labels.jpg)
 
+### Changing the Appearance of a Raster
+
+Right-click NightLights and choose “Properties...” Click on the Symbology tab. A slightly different dialogue box will appear from the one that we’re used to when working with shapefiles. There are several different methods of rendering raster data. We will use “Stretched.” The Stretched renderer displays continuous raster cell values across a gradual ramp of colors.
+
+Choose the Stretch Type “Minimum-Maximum.” Click “Display Background Value” and leave value at “0.” Right-click on the Color Ramp and choose “Properties...” Set “Color 2” to yellow and click “OK” all the way out (feel free to experiment more with these settings).
+
+Next, turn off world cities layer and urban areas layer. Right-click “World_Urban_Areas” and open Attribute Table. Notice that only ordinal data (rank) is available should you want to choose colors by it. Close Attribute Table and right-click “World_Urban_Areas” again. Choose “Properties...” and click on Symbology Tab. Use the symbol swatch to set the fill color to desired color. Set the outline color to “No Color.”
+
+You should by now be familiar with basic GIS data types, selection techniques, and symbology methods.
 
 ### Symbology
 
@@ -415,4 +408,4 @@ When you are ready to start exporting, turn off all layers except the NightLight
 
 Next, turn off NightLight layer and turn on railroads, roads, and urban areas. Click through “File > Export Map...” Save as type: AI. Open AI file in Illustrator. Place the NightLights image in the background and align layers. Adjust the colors, lineweights and transparencies. Save file as PDF.
 
-![export map dialog](../../assets/01_export-map-ai.jpg)
+![export map dialog](../../assets/01_export-map-ai.jpg) -->
