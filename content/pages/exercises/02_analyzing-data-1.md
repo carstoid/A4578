@@ -47,7 +47,7 @@ tab of the layer and select
 ![](../../assets/02_000.jpg)
 
 Click on “Add Values...”
-and Select “Y.” Click “OK.” Double-click on “Y” and set the line color to 30% gray and line width to 0.6. Click “OK.” Uncheck the “<all other values>” box and click “OK.”
+and Select “Y.” Click “OK.” Double-click on “Y” and set the line color to 30% gray and line width to 0.6. Click “OK.” Uncheck the “all other values” box and click “OK.”
 You should now have a coarser grid displayed on your map.
 Save your ArcMap project.
 
@@ -56,9 +56,13 @@ Save your ArcMap project.
 ### Projections in GIS Software
 
 Working with geospatial information in GIS software means working with coordinate systems and, usually, projected data. Before we get started, there are a few software-related concepts to cover.
+
 Recall that GIS data usually contains information about its coordinate system—datum, projection, etc. (In shapefiles, this information is stored in a PRJ file associated with the shapefile.) Knowing the coordinate system of one’s data is essential to working with it appropriately. This information also allows the software to re-project the data “on-the-fly.” In other words, GIS software can use the coordinate system information to re-project multiple different layers into the same projection in the data frame such that they align within the working space of the map project.
+
 On-the-fly projection can be quite beneficial, but is not always as effective as the data frame might make it appear. In instances when the software is re-projecting layers based on different datums (versus different projections based on the same datum), positional errors are more likely to occur. In these cases, a user will usually be met with a warning pop-up which might indicate a need to transform your data (recalculate its positional information from one datum to another).
+
 The ability to project data on-the-fly should suggest to you that the coordinate information of each dataset and the coordinate information of the data frame are conceptually separated in the environment of GIS software. By default, the coordinate system of the data frame is established by the first layer added to a map project.
+
 In our case, the world countries shapefile was the first layer we added to the project. As such, its coordinate system information has been assigned to the data frame. From this point forward, new data layers added to the project would be re-projected to match the coordinate system and projection of the data frame. At any point while working, we can change the coordinate system and/or projection of the data frame, and all layers within the project will be re-projected again to match. Again, this continual on-the-fly re-projection does not alter or transform the underlying coordinate system information of the individual datasets. (To do that, we would need to employ a specific tool that transforms and/or re-projects and exports a new dataset with a different coordinate system.)
 
 ### Comparing Projections
@@ -70,9 +74,12 @@ The coordinate information of any data layer can be identified in the layer’s 
 
 World Countries shapefile has a “Geographic Coordinate System” and “Projected Coordinate system” which means that it is associated with coordinates of a specific datum, and a specific projection. Sometimes we may encounter so-called “unprojected” shapefiles – they have an assigned datum, of course, but a specific projection has not been applied to it. As a result, the latitude and longitude coordinates would be plotted in a regular grid.
 
-PROJECTIONS BY TYPE:
+## Projections By Type
+
 Let’s review the primary types and categories of projections. Projections are categorized by two factors: the spatial properties they are designed to preserve and the shape of the projective surface employed to construct them.
-PROJECTIONS BY SPATIAL PROPERTY:
+
+### By Preserved Spatial Properties
+
 - Conformal projections preserve local angles—thereby also preserving the
 shape—of features. Maps created with a conformal projection will therefore
 more or less “look right” when compared to the features on the Earth’s surface.
@@ -81,13 +88,16 @@ more or less “look right” when compared to the features on the Earth’s sur
 map.
 - Azimuthal projections preserve the direction between two points along a
 straight line connecting them on the map. On an azimuthal map, that straight line is known as a rhumb line and intersects each parallel and meridian at a constant angle.
-PROJECTIONS BY SURFACE:
+
+### By Surface
+
 - Conic projections employ a cone as the projective surface. Maps made with
 conic projections are characterized by curved parallels and meridians that converge toward the apex of the cone (which is often, but not necessarily, positioned over one of the poles).
 - Cylindrical projections employ a cylinder as the projective surface. Basic cylindrical projections (those that have not been further edited to preserve specific spatial properties) are characterized by parallels and meridians that intersect at right angles, neither of which converge or curve.
 - Azimuthal or planar projections employ a plane as the projective surface, most closely resembling familiar orthographic projections.
 - Cartographers can alter the orientation of the projective surface relative to the reference model of the Earth. Polar and equatorial orientations are pointed toward the poles and equator, respectively. Oblique projections orient the projective surface anywhere between a pole and the equator.
 - Where the projective surface is tangent to or intersects the “Earth” (or, more accurately, a reference model of the Earth or a datum) display no scalar distortion on the map. These are referred to as standard parallels or meridians. A simple projection has one standard; a secant projection has two. The further away from a standard, the greater the distortion on the map.
+
 QUESTION 1.1:
 What are the linear units associated with the projection of the World Cities layer? If we were to measure distances between two points on our map, would this layer’s projection be appropriate for that? Explain why.
 
