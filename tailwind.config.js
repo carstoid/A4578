@@ -1,5 +1,7 @@
 module.exports = {
-  purge: [],
+  purge: [
+    //'./src/templates/**.*'
+  ],
   theme: {
     fontSize: {
       'xs': '.75em',

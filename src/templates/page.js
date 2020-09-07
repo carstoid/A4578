@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../layouts/default';
+import ExerciseMetadata from '../components/exerciseMetadata';
 
 export default function Template({ data }) {
   const { markdownRemark, site } = data
@@ -9,13 +10,9 @@ export default function Template({ data }) {
 
   return (
     <Layout siteMetadata={siteMetadata}>
-      <div className='page-body metadata'>
-        <div>Exercise {frontmatter.number}: {frontmatter.title}</div>
-        <div className='flex justify-between'>
-          <span>Posted {frontmatter.start}</span>
-          <span>Due {frontmatter.end}</span>
-        </div>
-      </div>
+      {(frontmatter.type == 'exercise') && 
+        <ExerciseMetadata frontmatter={frontmatter}/>
+      }
       <div className="page-body col-span-3" dangerouslySetInnerHTML={{ __html: html }} />
     </Layout>
   )
