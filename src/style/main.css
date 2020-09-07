@@ -16,12 +16,13 @@
 
 /* TYPE */
 
-p, ol, ul, h1, h2, h3, h4, h5, h6, table {
+p, ol, ul, h2, h3, h4, h5, h6, table {
   margin-bottom: 1.5em;
 }
 
 h1 {
   font-size: 2.448em;
+  margin-bottom: 1em;
 }
 
 h2 {
@@ -38,6 +39,20 @@ h4 {
 
 h5 {
   font-size: 1.2em;
+}
+
+small {
+  font-size: 0.694em;
+}
+
+ol {
+  list-style-type: decimal;
+  padding-left: 1em;
+}
+
+ul {
+  list-style-type: circle;
+  padding-left: 1em;
 }
 
 .metadata {
@@ -116,4 +131,10 @@ td:last-child {
 
 img {
   margin-bottom: 1em;
+}
+
+/* PRINT */
+
+@media print {
+  h1, h2, h3 {page-break-after: avoid;}
 }

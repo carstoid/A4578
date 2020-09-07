@@ -15,6 +15,7 @@ const Header = ({ siteMetadata }) => {
         <div>A4578-3 & 4</div>
         <div>Columbia GSAPP</div>
         <div>Fall 2020</div>
+        <div>Carsten Rodin</div>
       </div>
     </div>
   )
