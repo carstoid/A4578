@@ -4,7 +4,7 @@ date: 2020-08-15
 title: Course Overview
 ---
 
-This is the course page for A4578-3 and 4, the required lab section for M. Arch, AAD and AUD students enrolled in A4577 [Geographic Information Systems](https://courseworks2.columbia.edu/courses/sis_course_id:PLANA4577_001_2019_3/assignments/syllabus).
+This is the course page for A4578-3 and 4, the required lab section for M. Arch, AAD and AUD students enrolled in Leah Meisterlin's A4577 [Geographic Information Systems](https://courseworks2.columbia.edu/courses/106786).
 
 In lab we will:
 
@@ -51,6 +51,10 @@ Discussion: Appropriateness of data formats (Couclelis)
 | 10/26 | Spatial Statistics and Clustering | Analyzing Data 2 Due </br>Project Paragraph Peer Discussion Due</br>Analyzing Data 3 Distributed|
 | 11/2 | University Election Holiday | Optional Desk Crits |
 | 11/9 | Networks | Final Project Proposal Due |
+| 11/16 | Data Collection, Creation and Uncertainty | Analyzing Data 3 Due |
+| 11/23 | Participation, Privacy, Protection, and GIS | No Lab |
+| 11/30 | Future Directions: Research, WebGIS, Geolocative Services, and Ubiquitous Computing</br>GIS Infrastructures, Implications, and Ethics |  |
+| 12/7 | Project Presentations | Flash Talk Slides Due 12/7, 9am</br>All extra credit due 12/8, 9am</br>Final Report Due 12/5, 11:59PM |
 
 <!--  
 
@@ -63,18 +67,6 @@ resources for self-directed learning   materials on "how to learn" link with res
 Lab sections will be desk crits, tues cancelled or office hrs provided, email
 
 Preview & Precedent Review: Data Collection, Thick Mapping
--->
-
-#### Data + Society
-
-| Week | Lecture | Lab |
-| --- | --- | --- |
-| 11/16 | Data Collection, Creation and Uncertainty | Analyzing Data 3 Due |
-| 11/23 | Participation, Privacy, Protection, and GIS | No Lab |
-| 11/30 | Future Directions: Research, WebGIS, Geolocative Services, and Ubiquitous Computing</br>GIS Infrastructures, Implications, and Ethics |  |
-| 12/7 | Project Presentations | Flash Talk Slides Due 12/7, 9am</br>All extra credit due 12/8, 9am</br>Final Report Due 12/5, 11:59PM |
-
-<!--  
 
 "The Cartographer" vs collaborative mapping as a system.
 
