@@ -71,7 +71,7 @@ To avoid this, you should set up a **project folder** with a well-organized syst
 
 Finally, be aware that spaces and dashes in your file names can cause some of ArcGIS's processing algorithms to fail. To be safe, avoid using anything other than upper and lower-case numbers, digits and underscores.
 
-## Working With Vector Data
+## Working With Data
 
 Let's look at what's in our folder. Navigate to the `/mapping_data/data` folder in your file browser and look inside `vector`.
 
@@ -188,7 +188,7 @@ We can also access attributes per feature interactively through the data frame�
 
 ![open attribute table](../../assets/exercises/making-data/identify-tool.gif)
 
-<div class='question'><strong>1.1</strong> Use the Identify Tool to access attributes for the southernmost city in the world_cities feature class. What is its name? Compared with its two nearest neighbors, is it the largest or smallest city in the area in terms of population?</div>
+<div class='question'><strong>Question 1.1</strong> Use the Identify Tool to access attributes for the southernmost city in the world_cities feature class. What is its name? Compared with its two nearest neighbors, is it the largest or smallest city in the area in terms of population?</div>
 
 ### Selection
 
@@ -248,7 +248,7 @@ To create the join, right-click `world_cities` and select Joins and Relates > Jo
 
 Open the Attribute Table and scroll horizontally all the way to the right. You'll see two new fields including `NICKNAMES` for the 30 most populous cities. Like the Layer from Selected operation above, the results are just a view taken from the original data sources. If you want to create a new shapefile with the newly joined attributes included, you can save it as a new layer.
 
-<div class='question'><strong>1.2</strong> What is the nickname for Hong Kong? What about for the most populous city in the dataset?</div>
+<div class='question'><strong>Question 1.2</strong> What is the nickname for Hong Kong? What about for the most populous city in the dataset?</div>
 
 ## Working with Raster Data
 
@@ -260,152 +260,132 @@ Unlike vector data, which represents geometry as **discrete** objects in space, 
 
 ![open attribute table](../../assets/exercises/making-data/add-raster.gif)
 
-<!-- ## Map Design
+## Map Design
 
-Having familiarized ourselves with the information in the World Cities shapefile, we can now set up our map by including other layers and start experimenting with map design. Given the mapping challenge we are trying to tackle, what other geographic features can we use as a proxy for representing urban condition?
+Now that we've learned the basics of the ArcMap interface, seen what's in the `world_cities` shapefile, and learned how to add data from tables and raster sources, we can think about making what we normally think of as a map, that is, a designed document that shows us geographic information and attributes *visually*.
 
-In other to create an effective map, we might also include features that provide context to our map. In that case, what features shoud be highlighted and which should remain in the background? Think about those arguments and hierarchies as you proceed to the next step. We will start by adding:
+Let's start by adding some more layers. Find the following data sources in the exercise package and add them to the map:
 
-- A polygon feature class of world countries
-- A line feature class of world roads
-- A line feature class of world railroads
-- A polygon feature class of world urban areas
-- A raster file of the NASA-NOAA global light emissions and reflections, also known as the “Earth at Night” or the “Night time lights” image
+- A polygon feature class of `world_countries`
+- A line feature class of `world_highways`
+- A line feature class of `world_railroads`
+- A polygon feature class of `world_urbanareas`
+- A *raster* file of the NASA-NOAA global light emissions and reflections, also known as the “Earth at Night” or the “Night time lights” image (`night_lights`)
 
-Note: We will bear in mind the exact spatial reference for the file, such as map projection, coordinate system, and datum).
-
-cover georeferenced raster files in greater detail in future exercises. For now, that raster files can be spatialized (include all information necessary to establish
-
-Using the “Add Data” button and dialogue box, add World_Countries_(Generalized).shp, World_Roads.shp, World_Railroads.shp, and World_Urban_Areas.shp from the “00_DATA\ vector” folder, and NightLights_2016_3km_gray_geo.tif from the “00_DATA\raster” folder.
-
-Turn on railroads layer. Right-click “World_Railroads” and choose “Properties...” Click on the Symbology tab and use the symbol swatch to choose color and line weights. Repeat the steps for “World_Roads” layer. HINT: You might want to represent roads, railroads, and urban areas as componests of a single system, and hence, assign similar color values to all three layers.
-
-<div class='question'><strong>1.3</strong> How many features are included in the World\_Urban\_Areas feature class?**</div>
+<div class='question'><strong>Question 1.3</strong> How many features are included in the <code>world_urbanareas</code> feature class?</div>
 
 ### Layer Order
 
-Once again, each of the layers will be arbitrarily assigned a single color symbol. Also, depending on the order in which your new layers are added to the project, you may not be able to easily see each of them. You can rearrange your data layers’ order by clicking and dragging the layer names in the ToC (be sure that the “List by Drawing Order” option is selected in the ToC Panel).
+Just like with writing and drawing, establishing a **hierarchy** of information within our map helps communicate a clear message. Your map just went from having three layers to eight – time to decide what to emphasize!
 
-![drawing order setting in table of contents](../../assets/01_table-of-contents-drawing-order.jpg)
+One tool we have to control visual hierarchy is the layer order. In ArcMap, we can control this by clicking and dragging the layer names in the Table of Contents (be sure that the “List by Drawing Order” option is selected). Remember you can also turn layers on and off using the checkboxes next to their names.
 
-Rearrange the layers such that (from top to bottom) they are
-ordered: World Cities, World Urban Areas, World Railroads,
-World Roads, World Countries, Earth at Night. You can toggle the visibility of layers by checking and unchecking the box next to their names in the ToC. Uncheck all layers except World Cities. Save your ArcMap project.
+![open attribute table](../../assets/exercises/making-data/layer-order.gif)
+
+This helps, but it's a bit of a blunt tool. You'll notice larger polygons and rasters will simply cover up features underneath. But sometimes, this is what you want. Zoom in to a feature in the `world_urbanareas` layer. Do you want your `highways` and `railroads` above or below? What you choose might be different depending on the message you want your map to convey.
 
 ### Labeling Features
 
-Right-click on “World_Largest_Cities” and choose “Properties.” Click on the Symbology tab (Features/Single Symbol) and using the Symbol selector and Symbol Property Editor set both the Color and Outline to “No Color.” This operation will make the layer invisible on out map.
+Another way we can direct attention to information is by using labels. Here we'll literally "draw out" some of the attributes onto the surface of our map.
 
-Label text strings are derived from one or more feature attributes. Labels are dynamic, so if feature attribute values change, the labels also change. In our case, will label features with text strings derived “CITY_NAME” field.
-With “World_Largest_Cities” Layer Properties window still open, click on the “Labels” tab. Check the “Label Features in this Layer” box. Set Label Field to 
+Right-click on `world_cities_largest` and choose “Properties.” Click on the Symbology tab (Features/Single Symbol) and using the Symbol selector and Symbol Property Editor set both the Color and Outline to “No Color.” This operation will make the layer invisible on out map.
 
-“CITY_NAME” and choose the desired font, text color, and size. Click “OK.”
+Labels are dynamically drawn from one or more attributes of a feature – this means as the data changes, the labels change too. In our case, we'll label features using the “CITY\_NAME” field.
 
-![layer properties dialog](../../assets/01_layer-properties-labels.jpg)
+With the `world_cities_largest` Layer Properties window still open, click on the “Labels” tab. Check the “Label Features in this Layer” box. Set Label Field to “CITY_NAME” and choose the desired font, text color, and size. Click “OK.”
 
-### Changing the Appearance of a Raster
-
-Right-click NightLights and choose “Properties...” Click on the Symbology tab. A slightly different dialogue box will appear from the one that we’re used to when working with shapefiles. There are several different methods of rendering raster data. We will use “Stretched.” The Stretched renderer displays continuous raster cell values across a gradual ramp of colors.
-
-Choose the Stretch Type “Minimum-Maximum.” Click “Display Background Value” and leave value at “0.” Right-click on the Color Ramp and choose “Properties...” Set “Color 2” to yellow and click “OK” all the way out (feel free to experiment more with these settings).
-
-Next, turn off world cities layer and urban areas layer. Right-click “World_Urban_Areas” and open Attribute Table. Notice that only ordinal data (rank) is available should you want to choose colors by it. Close Attribute Table and right-click “World_Urban_Areas” again. Choose “Properties...” and click on Symbology Tab. Use the symbol swatch to set the fill color to desired color. Set the outline color to “No Color.”
-
-You should by now be familiar with basic GIS data types, selection techniques, and symbology methods.
+![open attribute table](../../assets/exercises/making-data/label.gif)
 
 ### Symbology
 
-We are now entering the design phase of our first mapping project. First, we will change the appearance of the World Cities Layer. Right-click on the layer name in the ToC and click Properties to access the Layer Properties dialogue box.
+Have you noticed your map doesn't look the same as the exercise images? When we added each vector layer, it was randomly assigned a color. Nobody dresses themself in the morning with random clothes. Rather, we choose what we wear based on how we want to appear in a context and what we want to communicate. You should make the same kinds of decisions for your data; how it appears on the map should be a conscious choice, meant to serve a purpose.
 
-Under the Symbology Tab, you will find the various symbology options. Take a moment to read the dialogue box options. On the left panel, the user can choose to “Show” Features, Categories, Quantities, Charts, or Multiple Attributes. The first option (Features, shown as single symbols) is always the default, but we will choose to show quantities via different symbology approaches. Our goal is to establish hierarchy among the features in the class.
+Let's explore our options with the `world_cities` layer. Right-click on the layer name in the Table of Contents, click Properties and navigate to the Symbology tab.
 
-![menus to open layer properties](../../assets/01_show-layer-properties.jpg)
+![](../../assets/exercises/making-data/point-symbology.gif)
 
-Open layer’s attribute table and once again observe the information stored in various fields. Note that some fields contain nominal information, and others contain quantitative information – e.g. population rank (POP_RANK), which ranks cities from 1 (most populous) to 7 (least populous). We will represent those values using color gradients.
+Take a moment to read through the options. In the panel on the left, you can choose to show Features, Categories, Quantities, Charts, or Multiple Attributes. The first option (Features, shown as single symbols) is always the default, but let's change this to Quantities (Graduated Colors) to render the points in different colors based on the value of a numeric attribute. This will help us create a sense of visual hierarchy.
 
-![layer properties symbology dialog](../../assets/01_layer-properties.jpg)
+Remember that the attribute table showed attributes containing both text (like CITY\_NAME and CNTRY\_NAME) and numbers (POP, POP\_RANK). In the "Value" drop-down, you'll see only the subset of fields that contain numbers. Select POP_RANK.
 
-In the Symbology Tab window, click on “Quantities” and make sure that “Graduated Colors” is selected. Set the “Value” field to “POP_RANK.” Under “Classification,” set the number of classes to 7.
-This will ensure that each class has a different color assigned.
-Right-click on any of the
-values in range and select
-“Properties for All Symbols...”
-Double-click on the circle
-under “Current Symbol,”
-which will open the Symbol
-Property Editor. Set the circle size to 4, and outline color to “No Color.” Click “OK” to close the Editor and Selector.
+Next, under “Classification,” you can control how many different symbols to show across the range of values, and how the range is split up. Since there are seven levels in the POP_RANK field, it makes sense to select "7" from the drop-down to show a different symbol for each unique value.
 
-![symbol selector dialog](../../assets/01_symbol-selector.jpg)
+We can change the overall appearance of the symbols by shift-selecting all seven items in the list, then right clicking one of them and selecting "Properties for Selected Symbols". In the Symbol Selector dialog, use the Edit Symbol button to change the outline, size and style of the symbol. Leave the Color property as-is since that's being generated by the classification.
 
-![symbol property editor dialog](../../assets/01_symbol-property-editor.jpg)
+The Color Ramp drop-down gives us a choice of color scheme. Choose a [sequential](https://web.natur.cuni.cz/~langhamr/lectures/vtfg1/mapinfo_2/barvy/colors.html#seq), rather than [diverging](https://web.natur.cuni.cz/~langhamr/lectures/vtfg1/mapinfo_2/barvy/colors.html#diverging) scheme since our values are arranged in a linear sequence from low to high. You can also create a custom ramp by right-clicking on the drop-down and choosing“Properties...”.
 
-Next we want to choose a color gradient in order to render more populous cities brighter on the map. Right-click on Color Ramp and choose “Properties...” The Edit Color Ramp dialogue will appear. Set the Color 1 to light gray, or choose a different color combination. For this exercise, a simple grayscale ramp will suffice.
+#### Changing the Appearance of the Data Frame
 
-TIP: While ArcMap is not a design software, there is a surprising amount of flexibility built in to alter the appearance of a feature symbol. Even though you might want to finalize the design in Adobe Illustrator, we encourage you to explore the options available through the Edit Symbol button and other options.
+Next, we will change the color of the data frame’s background (which is serving as the color of the area not covered by the point features). To access the Data Frame Properties dialogue box, right-click anywhere in the data frame area of the ArcMap interface and choose “Data Frame Properties.” Set the Border to “None” and Background color to black. Click “OK.”
 
-![data frame properties frame dialog](../../assets/01_data-frame-properties.jpg)
+![](../../assets/exercises/making-data/dataframe-appearance.gif)
 
-When you are satisfied with the symbol and colors you have chosen—you can always return to these dialogue boxes to make changes—click “OK” to return to your project.
+#### Polyline Symbology
 
-Next, we will change the color of the data frame’s background (which is serving as the color of the area not covered by the point features). To access the Data Frame Properties dialogue box, right-click anywhere in the data frame area of the ArcMap interface and choose “Data Frame Properties.”
+Turn on the `world_railroads` layer. Access its Layer Properties and use the options under the Symbology tab to choose color and line weights. Notice we have different options since lines and points are drawn in different ways. Repeat for `world_highways`. Think about how, or whether, you want to show difference between the two.
 
-Set the Border to “None” and Background color to black. Click “OK.”
+![](../../assets/exercises/making-data/polyline-symbology.gif)
 
-![world city points, white dots on black](../../assets/01_world-cities-night.jpg)
+#### Polygon Symbology
 
-Finally, turn on the World Countries layer’s visibility by rechecking the box next to the layer’s name in the ToC. Change the countries’ appearance on the map by changing its symbol. Give the features dark gray fill color and no visible outline.
+Finally, turn on the `world_countries` layer and change its appearance. If you want to include `world_urbanareas` in your map, change its symbology too.
+
+While ArcMap is not a design software, there is a surprising amount of flexibility built in to alter the appearance of a feature symbol. Sometimes you'll want to finalize the design in another software like Adobe Illustrator, but we encourage you to explore the options available through the Edit Symbol button and other options.
+
+![polygon symbology](../../assets/exercises/making-data/polygon-symbology.gif)
+
+### Changing the Appearance of a Raster
+
+Raster Symbology options are accessed the same way as for vector data. This time, though, the options are quite different. There are several different methods of rendering raster data. We will use “Stretched.” The Stretched renderer displays continuous raster cell values across a gradual ramp of colors.
+
+Choose “Standard Deviations” as the Stretch Type, then click “Display Background Value” and leave the value at “0.” Right-click on the Color Ramp and choose “Properties...” Set “Color 2” to yellow and click “OK” all the way out (feel free to experiment more with these settings).
+
+![raster symbology ](../../assets/exercises/making-data/raster-symbology.gif)
 
 ### Layout View
 
-The ArcMap interface’s data view is useful when conducting analysis. When we need to compose a map, we must switch interfaces to the Layout View. Using the buttons on the lower left of the data frame, toggle between Data View and Layout View.
+So far, we've been looking at the contents of our data frame through "Data View". Like AutoCAD or Rhino, ArcMap also has a Layout View to help compose scaled layouts for print or PDF. You can switch views using the buttons on the lower left corner of the viewer.
 
-![layout view toggle](../../assets/01_layout-view.jpg)
+![layout view toggle](../../assets/exercises/making-data/data-layout-toggle.gif)
 
-Notice that Layout View places the contents of the data frame onto a “page.” By default, this should be an 8.5” by 11” standard US letter sheet. Page size and orientation can be changed in Page and Print Setup. Navigate to menu item “File > Page and Print Setup.” In the dialogue window, uncheck the “Use Printer Paper Settings.” Change the orientation to “Landscape” and leave the paper size 11” x 8.5.” Click “OK.”
+By default, you'll see a US Letter sheet, oriented as Portrait when you switch to Layout. Page size and orientation can be changed under File > Page and Print Setup. Uncheck “Use Printer Paper Settings,” change the orientation to landscape and the page size to 11x17 (also listed as Tabloid in the Standard Sizes drop-down.
 
-In layout view, the size and location of the data frame can be changed using the transform controls surrounding the data frame. If necessary, you can use the Select Elements tool on the Tools toolbar to select the data frame. Notice also that your other tools (e.g., zooming and panning tools) will operate as they did in the Data View—zooming and panning within the data frame.
+The Layout Toolbar should appear when you switch the view. The Pan and Zoom tools in this toolbar control how we see the page itself, as if we were moving a sheet of paper around on a table. The Tools Toolbar controls still change the view of the data frame itself, just like before, and you can still use Select Features and Identify the same way. The Select tool can be used to resize and arrange elements on the page. The map scale drop-down in the Standard Toolbar can be used to accurately set the dataframe to a standard or custom map scale.
 
-![page and print setup dialog](../../assets/01_page-print-setup.jpg)
+Resize and position your data frame on the page, then scale and pan the data frame to show the desired area. If you haven't saved your project recently, do so now.
 
-Note that a new toolbar is activated in layout view: The Layout Toolbar. This contains many tools similar to those of the Tools toolbar, except they operate on the “page” rather than on the data frame. For example, panning with the Layout Pan tool will not affect the cartographic data within the data frame, but will pan around the layout page.
-
-![map scale selector](../../assets/01_map-scale.jpg)
-
-Resize and position your data frame on the page, zooming and panning to desired place on the map. Set the scale between 1:15,000,000 and 1:20,000,000.
-
-![map layout view](../../assets/01_eur-raster-layout.jpg)
+![layout view](../../assets/exercises/making-data/layout-view.gif)
 
 ### Adding Graphic Elements
 
-For our purposes, most maps we produce in these exercises is expected to include the following map elements:
+The map itself should always carry as much of the message as possible, but it's almost always helpful to include standard graphic elements in your composition. Maps produced for this class should almost always include:
 
-- A scale bar
-- A legend, with pertinent information A descriptive title
-Labels
-- Pertinent data sources
+- Scale bar
+- Legend
+- Labels
+- A title
+- Data sources
 
-Let’s begin by adding Scale Bar. To create a scale bar, click on the menu item “Insert > Scale Bar.” The Scale Bar Selector dialogue box will appear. Choose a scale bar style, and click “OK.”
+Let’s begin by adding a Scale Bar. To create a scale bar, click on the menu item “Insert > Scale Bar.” The Scale Bar Selector dialogue box will appear. Choose a scale bar style, and click “OK.”
+
+![scale bar](../../assets/exercises/making-data/scale-bar.gif)
 
 To alter the scale bar’s appearance or units, right-click on the scale bar and click Properties to open the Scale Line Properties dialogue. If it is not already set to report the scale in miles, then change the Division Units (under the Scale and Units tab) to Miles. Although our data is projected and calculated in meters, at the scale of the continent describing the distances represented on the map in meters would be cumbersome and confusing to most readers.
 
-![scale bar selector dialog](../../assets/01_scale-bar.jpg)
-
 The “best” choices for other options will vary depending on which scale bar style you have chosen. Take some time to test out different options (e.g., divisions, marks, frame, and background) by making changes in the Properties dialogue box and clicking Apply. When you are satisfied with the appearance of your scale bar, click OK.
 
-TIP: Once you are familiar with these options, you can access the Properties dialogue box from the Scale Bar Selector dialogue (when you initially insert a scale bar) by clicking the Properties button (above).
+Once you are familiar with these options, you can access the Properties dialogue box from the Scale Bar Selector dialogue (when you initially insert a scale bar) by clicking the Properties button (above).
 
-TIP: You can adjust the values in your scale bar by resizing it within the layout. With this you can size the scale bar such that it reports round numbers (which are easier to read). Save your ArcMap project.
-
-![scale bar units dialog](../../assets/01_scale-line-properties-units.jpg)
-
-![scale bar format dialog](../../assets/01_scale-line-properties-format.jpg)
+You can adjust the values in your scale bar by resizing it within the layout. With this you can size the scale bar such that it reports round numbers (which are easier to read). We'll go over creating a legend in future exercises, for now, try using Insert > Title and Insert > Text to provide more information for your viewer.
 
 ### Exporting A Map
 
-There are several file type options for exporting a map from the Layout. Saving to a vector format (EPS, AI, etc) will preserve the vector geometry of your layers for further editing. Given that you also have a imagery on your map, you might consider exporting only the raster data of the map as JPG or TIFF and compiling them with vector data in another program.
+There are a few file type options available when it's time to export your Layout. Saving to a vector format (EPS, AI, etc) will preserve the vector geometry of your layers for further editing (e.g. in Illustrator). Since your project contains raster data, you might also want to export that separately as a JPG or TIFF for editing in Photoshop before combining it with the vector layers again in Illustrator or InDesign.
 
-When you are ready to start exporting, turn off all layers except the NightLights. Click through “File > Export Map.” In the dialogue box, choose where to save the map by navigating to the “\01_MappingData\Outputs\” folder. Save as type: TIFF, and set the resolution to 150dpi. Click “Save” (Before you do that, you might consider temporarily dragging the scale bar off the page so it doesn’t appear on your exported tiff).
+If you do choose to export vectors separately, it's a good idea to also temporarily remove all of the graphic elements from your layout, since otherwise these will appear as part of the image.
 
-Next, turn off NightLight layer and turn on railroads, roads, and urban areas. Click through “File > Export Map...” Save as type: AI. Open AI file in Illustrator. Place the NightLights image in the background and align layers. Adjust the colors, lineweights and transparencies. Save file as PDF.
+![export ](../../assets/exercises/making-data/export.gif)
 
-![export map dialog](../../assets/01_export-map-ai.jpg) -->
+To export, click through “File > Export Map.” In the dialogue box, choose a location in your project folder to save the map. Choose the desired file type and click “Save.”
+
+For your final map, you can either compose it completely in ArcMap, or experiment with further editing/compositing in Creative Suite.
