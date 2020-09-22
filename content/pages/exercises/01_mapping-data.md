@@ -389,3 +389,7 @@ If you do choose to export vectors separately, it's a good idea to also temporar
 To export, click through “File > Export Map.” In the dialogue box, choose a location in your project folder to save the map. Choose the desired file type and click “Save.”
 
 For your final map, you can either compose it completely in ArcMap, or experiment with further editing/compositing in Creative Suite.
+
+---
+
+Tutorial by Carsten Rodin, Fall 2020. Adapted from materials by Leah Meisterlin and Grga Basic, Fall 2018.
