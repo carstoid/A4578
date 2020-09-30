@@ -56,7 +56,7 @@ Most map users give little thought to the map projection used for a large-scale 
 
 ### Setting Up
 
-Download and unzip the the [exercise package](/downloads/analyzing-data_1.zip), saving it to your working drive.
+Download and unzip the the [exercise package](/downloads/exercise_2_updated.zip), saving it to your working drive.
 
 Launch ArcMap and create a new, blank map project. Immediately save the new project as AnalyzingData1_Part1.mxd in your project folder. (Reminder: if you will be moving your work from one drive to another, be sure to “Save relative pathnames” in the Map Document Properties option dialogue.)
 
