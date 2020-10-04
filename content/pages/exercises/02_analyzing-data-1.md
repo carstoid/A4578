@@ -185,6 +185,18 @@ Finally, let's look at a **Robinson** projection. Change the projection one last
 
 You can explore more projections by selecting them from the World and Polar menus. Choose one and export your map one last time.
 
+## Calculating Densities in ArcMap
+
+This section describes how to calculate street tree densities for the geoprocessing exercise (see PDF on Canvas for full instructions). Because of a mix-up, the instructions on modifying the attribute table as needed for this step were omitted from the exercise PDF.
+
+Here's what you need to do: first, add a new field for area (`area_acre`) and use Calculate Geometry to populate it with values as shown in this animation:
+
+![](../../assets/exercises/analyzing-data-1/area.gif)
+
+Next, add one more field for the density (`trees_acre`) and use the Field Calculator to compute the density:
+
+![](../../assets/exercises/analyzing-data-1/density.gif)
+
 ---
 
 Tutorial by Grga Basic, Fall 2018.
