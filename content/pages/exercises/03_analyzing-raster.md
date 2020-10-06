@@ -1,73 +1,87 @@
 ---
-title: Analyzing Data 2
-date: 2020-08-16
-slug: /exercises/03_analyzing-data-2
+type: exercise
+number: 3
+title: Analyzing Raster Data
+date: 2020-09-22
+slug: /exercises/03_analyzing-raster
+start: 2020-10-06 11:00 (EDT)
+end: 2020-10-27 09:00 (EDT)
 ---
 
-## ANALYZING DATA 2: Working With Rasters & Remotely Sensed Data
+## Overview
 
-Remote Sensing is defined as the science and technology by which characteristics of objects
-and areas of interest can be identified and obtained without direct contact, typically from aircrafts or satellites. Advantages of remote sensing over on-site observation include:
-• Ability to observe a broad area at a time
-• Repeat pass observation / time-series studies (Change detection)
-• Ability to identify and study the condition without visiting the area
-• Obtaining “invisible” information:
+Remote Sensing is defined as the science and technology by which characteristics of objects and areas of interest can be identified and obtained without direct contact, typically from aircraft or satellites. Advantages of remote sensing over on-site observation include:
+
+- Ability to observe a broad area at a time
+- Repeat pass observation / time-series studies (Change detection)
+- Ability to identify and study the condition without visiting the area
+- Obtaining “invisible” information:
 - Sensors for various electromagnetic spectrum (infrared, microwave)
+
 Remote sensing data is typically stored in raster images with varying spatial, spectral, and temporal resolutions. Raster images are composed of a matrix of picture elements, or pixels, which are the smallest units of an image. In GIS, raster image pixels are referred to as cells. Cells are normally square and may correspond to areas ranging in side length from less than 1 to more than 1,000 meters (3.3 to 3,280.8 ft).
+
 After completing this exercise, students will have:
-• Understanding how remote sensing data is organized and stored
-• Conducted a multi-step, raster-based, geoprocessing-centric time series analysis
-• Conducted a multi-step, vector and raster-based, geoprocessing-centric hydrology
+
+- Understanding how remote sensing data is organized and stored
+- Conducted a multi-step, raster-based, geoprocessing-centric time series analysis
+- Conducted a multi-step, vector and raster-based, geoprocessing-centric hydrology
 analysis
-• Represent a terrain in various different ways
+- Represent a terrain in various different ways
+
 Further, students should be able to:
-• Access and download data from Earth Explorer
-• Set geoprocessing extents in ArcGIS
-• Classify land use and land cover from Landsat imagery
-• Delineatewatersheds
-• Visualize stream networks
-Part 1 | Reading Response: A Map
-Select a thematic map depicting at least one raster dataset as a thematic layer—that is, the raster
-layer cannot simply provide background imagery or context. This map can be printed or digital, made for any purpose, and of any age. It must be a static (not animated, not interactive), two-dimensional, planimetric map. If your map is printed, you will have to acquire a scanned image of it. Think about the topics and questions below before choosing your map. (Of course, if it is not designed in such a way for you to discuss its composition in the terms outlined below, then it is probably not a good choice for this assignment.)
-Claim your map! Each student should select a different map to discuss—on a first come, first served basis. To claim your map, comment on the Assignment Discussion Thread called “Analyzing Data 2: Reading Response.” In that comment, embed an image of the map, and include the map’s bibliographic citation. Check that no one else has already claimed your map. If you are ready to write your Reading Response, you can add the text to this comment. If not, reply to your original comment with the text of your Reading Response when you are ready to submit.
-Your reading response should be no more than 250 words. Consider some of the following questions when thinking about the map. Please note that the reading response should not simply answer these questions nor should it describe the map. Instead, please focus your response around your critical and careful reading of the map, supported with description where necessary. (In other words, these questions are to help you choose and evaluate the map.)
-(a) What is the intended purpose, “story,” argument, or thesis of the map? How do you know? How effectively and/or persuasively is this argument made?
-(b) Who is its intended audience? How do you know this? Is it implied in the design of the map (be specific)?
-(c) Does the map display quantitative or qualitative information? If quantitative, consider whether and how the data is classified. If qualitative, consider whether and how the data is categorized. Is the reasoning behind these choices clear to the reader? Is the map designed to be read as authoritative, interpreted, experiential, generalizable, activist, ...? (And how can you tell?)
-(d) Consider the map-maker’s decision to employ raster-based information rather than its vector counterpart. Does this decision work to the map’s advantage? Why or why not?
-Note that this deliverable is submitted through the Discussion Board for a reason. Take a little time to consider the maps and responses contributed by others. You’re encouraged to add comments, discuss, and so on.
 
-## Part 2 | Change Mapping: Houston, TX
+- Access and download data from Earth Explorer
+- Set geoprocessing extents in ArcGIS
+- Classify land use and land cover from Landsat imagery
+- Delineatewatersheds
+- Visualize stream networks
 
-One of the most important applications of remote sensing has been tracing the transformation of land patterns and urbanization over time. The availability of free Landsat satellite images that have been in orbit since 1972 has made it possible for us to map land cover at different spatial and temporal scales and to create quantitative analysis of land cover changes between then and now and whatever time increment is chosen. It is up to designer, however, to interpret the ground condition, and to speculate and recognize how the changes of certain features on the ground lend themselves to a story of the process of urbanization and lead to a variety of interpretations and design responses. In this exercise, we will learn land cover classification methods using Landsat satellite imagery, and then drill deeper into evaluating the change quantitatively.
+### Deliverables
 
-### Mapping Project
+**Exercise Questions**. Answer all of the questions in the exercise, explaining how you got your answer. Record your answers in a simple table like the one below, saved as a CSV file. Make sure your entire answer is inside the `A` column.
 
-Four major hurricanes – Harvey, Irma, Jose, and Maria – have ravaged the US in 2017. Since hurricane forecasting has vastly improved in the past century, many lives have been saved. However, despite the accurate forecasting, the damages incurred during the last year’s season have been among the most costly in recorded history. Advances in forecasting have not stopped us from continuing to build in the floodplain.
-This exercise starts with the hypothesis that in the case of Houston, TX, the loss of wetlands as a result of lax regulations and rampant development has been a major cause of flooding that ultimately resulted in catastrophic property damage. There is a scientific consensus that wetlands can absorb large amounts of flood water. While it is fair to say that the vanished wetlands of Houston wouldn’t have prevented flooding, experts agree that they would have made it a lot less painful.
-Using false color satellite imagery, and referring to this Texas A&M University study as a springboard, we will visualize and measure the loss of wetlands in Houston, TX, between 1987 and 2017.
+| Q | A |
+|---|---|
+|1.1| There are 5,280 feet in a mile. |
+|1.2| Raster and vector. |
+|...| ... |
 
-### Data
+**Map**. As you work through the exercise you'll create several maps. For the assignment submission, arrange these in a single 11x17 layout, preferably in landscape orientation, saved as a PDF.
 
-## MULTISPECTRAL IMAGE
+Name both files `yourUNI_exerciseN`, substituting your UNI, the current exercise number for N. Place them inside a `.zip` archive with the same name and submit through canvas.
 
-Some rasters have a single band, or layer, of data, while others have multiple bands. A multiband image is a collection of several monochrome images of the same scene, each of them taken with a different sensor. Each image is referred to as a band. A well known multiband (or multispectral image) is a RGB color image, consisting of a red, a green and a blue image, each of them taken with a sensor sensitive to a different wavelength. Landsat 5, for example, produces 7 band images representing different wavelengths from the ultraviolet through the visible and infrared portions of the electromagnetic spectrum.
+---
+<br/>
 
-In this exercise, we will use data from Landsat 5 and Landsat 8 sensors:
+## Change Mapping: Houston, TX
 
-### Landsat 5
+One of the most important applications of remote sensing has been tracing the transformation of land patterns and urbanization over time. The availability of free images from Landsat satellites that have been in orbit since 1972 has made it possible for us to map land cover at different spatial and temporal scales and to create quantitative analysis of land cover changes between then and now and whatever time increment is chosen. It is up to designer, however, to interpret the ground condition, and to speculate and recognize how the changes of certain features on the ground lend themselves to a particular narrative. In this exercise, we will learn land cover classification methods using Landsat imagery, and then evaluate change in land cover between two moments in time.
+
+Four major hurricanes – Harvey, Irma, Jose, and Maria – ravaged the US in 2017. Since hurricane forecasting has vastly improved in the past century, many lives have been saved. However, despite the accurate forecasting, the damages incurred during the last year’s season have been among the most costly in recorded history. Advances in forecasting have not stopped us from continuing to build in the floodplain.
+
+This exercise starts with the hypothesis that in the case of Houston, TX, the loss of wetlands (resulting from lax regulations and rampant development) has been a major cause of catastrophic flooding and property damage. There is a scientific consensus that wetlands can absorb large amounts of flood water. While it is fair to say that the vanished wetlands of Houston wouldn’t have prevented all flooding, experts agree that they would have made it a lot less painful.
+
+Using false color satellite imagery, we will visualize and measure the loss of wetlands in Houston, TX, between 1987 and 2017.
+
+### About Multispectral Images
+
+Some rasters have a single band, or layer, of data, while others have multiple bands. A multiband image is a collection of several monochrome images of the same scene, each of them taken with a different sensor. Each image is referred to as a band. A well known multiband (or multispectral image) is a RGB color image, consisting of a red, a green and a blue image, each of them taken with a sensor sensitive to a different wavelength. Landsat 5, produces 7-band images representing different wavelengths from the ultraviolet through the visible and infrared portions of the electromagnetic spectrum.
+
+In this exercise, we will use data from both Landsat 5 and Landsat 8 sensors. The bands included in each are as follows:
+
+#### Landsat 5
 
 | Sensor | Bands | Wavelength (μm) |
 | --- | --- | --- |
 | Thematic Mapper (TM) | Band 1 – Blue | 0.45-0.52 |
 | | Band 2 – Green | 0.52-0.60 |
 | | Band 3 - Red | 0.63-0.69 |
-| | Band 4 - Near Infrared (NIR) | 0.52-0.60 |
+| | Band 4 - Near Infrared (NIR) | 0.77-0.90 |
 | | Band 5 - Shortwave Infrared (SWIR) 1 | 1.55-1.75 |
 | | Band 6 - Thermal | 10.40-12.50 |
 | | Band 7 - Shortwave Infrared (SWIR) 2 | 2.08-2.35 |
 
-### Landsat 8
+#### Landsat 8
 
 | Sensor | Bands | Wavelength (μm) |
 | --- | --- | --- |
@@ -83,87 +97,77 @@ In this exercise, we will use data from Landsat 5 and Landsat 8 sensors:
 | Thermal Infrared Sensor (TIRS) | Band 10 - Thermal Infrared (TIRS) 1 | 10.60 - 11.19 |
 | | Band 11 - Thermal Infrared (TIRS) 2 | 11.50 - 12.51 |
 
-<!-- TODO: check this table -->
+Further discussion of the two sensors and commentary on the potential uses of each band is available on this [page from the USGS](https://www.usgs.gov/faqs/what-are-best-landsat-spectral-bands-use-my-research?qt-news_science_products=0#qt-news_science_products).
 
-## DOWNLOADING LANDSAT IMAGERY
+### Downloading Landsat Imagery
 
-There are number of ways to access and download Landsat data. We will use the most common tool
-– USGS Earth Explorer (https://earthexplorer.usgs.gov/) – one of largest databases of remote sensing data. Landsat data products will have the following download options:
-• Level-1 Product: Full resolution (.tif) individual band files
-• LandsatLook Images: Full resolution (.jpg) composite images We will download Level-1 product and create composite images in ArcMap.
-In your web browser, go to EarthExplorer. First, you’ll have to create an account with USGS. In the top- right corner, click the “Register” button. Once you’ve created your account, sign in.
-In order to download data from USGS Earth Explorer, here are the four steps you’ll need to follow:
-1. Set your search criteria
-2. Select your data to download
-3. Filter out your data
-4. Check your results and download
-1. Set your area of interest in the “Search Criteria” tab:
-• Zoom to desired area on the map (Houston) and generate your region of interest by
-clicking on a map.
-• Set the Date Range for satellite images. We are comparing Houston between 1987 and
-2017, so we will need to repeat this, and all the following steps twice. First, let’s download data for 1987. Set the Date Range to “Search from: 01/01/1987 to 09/30/1987.”
+There are number of ways to access and download Landsat data. We will use [USGS Earth Explorer](https://earthexplorer.usgs.gov/), one of largest public databases of remote sensing data. While the data is free, you’ll need to create an account with USGS to be given download permission. In the top-right corner of the Earth Explorer home page, click Login, then Create New Account on the next page. Once you’ve created your account, sign in.
 
-![](../../assets/03_000.jpg)
+To locate and download the data we need from Earth Explorer, there are the four basic steps, corresponding to the tabs on the left-hand panel. Note that since we're interested in comparing Houston between 1987 and 2017, we'll need to obtain a separate set of data representing each.
 
-2. Select your data to download in the “Data Sets” tab:
-• The Data Sets tab answers the question “what data are you looking for?” In order
-to select an appropriate Landsat product, we need to know the basic history of the Landsat mission. Landsat 5 has been in orbit from March 1984 till January 2013, so we will search for Landsat 5 TM Level-1 Product
-• Navigate to “Landsat > Collection 1 Level-1” and select “Landsat 4-5 TM Level-1”
+#### Search Criteria
 
-![](../../assets/03_002.jpg)
+Here we define the general spatial and temporal extents of the search. Pan and zoom to the general area of interest, then create a search polygon by clicking points on the map. Then set the Date Range. For the our first dataset (1987), use 01/01/1987 to 09/30/1987.
 
-3. Filter your data in the “Additional Criteria” tab:
-• We need a cloudless image in
-order to be able to classify land use. Set the Land Cloud Cover to “Less than 10%.”
-• Set the Spacecraft Identifier to “Landsat 5.”
-• Set the Day/Night indicator to “Day.”
+![](../../assets/exercises/analyzing-raster/earth-explorer_search-criteria.gif)
 
-4. Review and download Landsat imagery in the “Results” tab:
-• Before downloading data, it’s good to check the footprint in order to see exactly where
-that scene is located.
-• You can also preview the data, which can be good to see exactly where clouds are in
-the image.
+#### Data Sets
 
-![](../../assets/03_004.jpg)
-![](../../assets/03_006.jpg)
+Now, we'll start to narrow down results by choosing specific data sources. Landsat 5 was active from March 1984 to January 2013, so for the 1987 dataset we want to choose Landsat 5. The "Level-1" landsat data will give us the full range of bands we need for our analysis, so we should choose “Landsat > Collection 1 Level-1” and check the box for “Landsat 4-5 TM Level-1.”
 
-• Notice that the scenes are organized in paths and rows. We will use Path 25, Row 39 imagery acquired on 4/4/1987 for our analysis.
-• Download Level-1 GeoTIFF Product.
+![](../../assets/exercises/analyzing-raster/earth-explorer_data-sets.gif)
 
-Next, we need to acquire imagery from 2017:
-Repeat the steps 1-4, setting the Date Rage from
-“01/01/2017 to 09/30/2017” in the Search Criteria tab, and selecting “Landsat 8 OLI/TIRS C1 Level-1”
-in the Data Sets tab. Under Additional Criteria, set the Land Cloud Cover again to “Less than 10%,” and Day/Night indicator to “Day.” After examining results, download path 25, row 39 scene from 03/21/2017.
+#### Additional Criteria
 
-TIP:
-Knowing the path and row of your scene in advance helps defining the Area of Interest. Under Search Criteria, click on the Path/Row tab, and set the Path to “25” and Row to “39” to limit your results to this particular Landsat scene. Also, you can use the WRS-2 Path/Row to Latitude/Longitude Converter to identify the closest Landsat path and row from any given coordinates.
+In the next tab we'll filter our results even further. Since we need a cloudless image to be able to determine land use, set the Land Cloud Cover to “Less than 10%.” Then set the Spacecraft Identifier to “Landsat 5” and the Day/Night indicator to “Day.”
 
-### Setting Up
+![](../../assets/exercises/analyzing-raster/earth-explorer_additonal-criteria.gif)
 
-Create the following folders in your personal “ChangeMapping” workspace:
+#### Results
 
-• 00_DATA
-• 01_ProjectFiles
-• 02_MyRasters
-• 03_MyShp
-• 04_Outputs
+Now it's time to see the results. On the left you'll see a list of Landsat captures matching the search criteria. You can preview their location on the map by clicking the footprint icon, or preview the image contents. Each capture, which is called a "scene," is organized by "path" and "row" which defines its position within the grid system used to organize Landsat data. We'll use the scene at Path 25, Row 39 on **4/4/1987** for our analysis.
 
-![](../../assets/03_010.jpg)
+Download the "Level-1 GeoTIFF Data Product" for that scene, and save it to your project folder.
 
-Unzip the data you’ve downloaded and place it in
-the “00_DATA” folder. Take a moment to observe its contents. Notice that there are individual image files for each band, along with the metadata. The file with “MTL” suffix is the metadata file of the whole scene.
+![](../../assets/exercises/analyzing-raster/earth-explorer_results.gif)
 
-> QUESTION 2.1: Open the metadata files of the imagery you’ve downloaded (acquired on 04/04/1987 and on 03/21/2017). What is the percentage of cloud cover on each scene?
+Now we need to repeat each step to obtain 2017 data, using the same parameters as the first time with the following exceptions:
+
+1. Search Criteria – use 01/01/2017 to 09/30/2017 as the date range
+2. Data Sets - choose Landsat 8 OLI/TIRS C1 Level-1 as the source
+3. Additional Criteria - leave Sensor Identifier blank
+4. Results – Download the path 25, row 39 scene **from 3/21/2017**
+
+TIP: Knowing the path and row of your scene in advance helps defining the Area of Interest. Under Search Criteria, click on the Path/Row tab, and set the Path to “25” and Row to “39” to limit your results to this particular Landsat scene. Also, you can use the WRS-2 Path/Row to Latitude/Longitude Converter to identify the closest Landsat path and row from any given coordinates.
+
+### Setup
+
+For the first two exercises, you've been provied with data and a project folder structure. Since we're starting this time by obtaining our own data, we'll also need to set up our own project folder. If in doubt, use something like the following:
+
+```sh
+exercise_3
+├ data_received
+│ ├ raster
+│ └ vector
+├ data_processed
+├ project_files
+└ outputs
+```
+
+Your downloaded Landsat rasters should be unzipped and placed under `data_received/raster`. Take a moment to observe its contents. Notice that there are individual image files for each band, along with the metadata. The file with “MTL” suffix is the metadata file of the whole scene.
+
+<div class='question'><strong>Question 1</strong> Open the metadata files of the imagery you’ve downloaded (acquired on 04/04/1987 and on 03/21/2017). What is the percentage of cloud cover for each scene?</div>
 
 ### Getting Started
 
-Launch ArcMap and choose “Blank Map” from “My Templates.”
-Right-click on “Layers” and choose “Add Data...” Navigate to “\00_Data\...\LT05_L1TP_025039_19870 404_20161003_01_T1\” folder. Shift-select TIFF files “...B1” through “...B7” and click “Add” (spectral bands 1 through 7). Save file as “AnalzingData2_ChangeMapping.mxd.”
+Create a new blank map in ArcMap. From the downloaded 1987 data, add the TIFF files ending in “...B1” through “...B7”. Using the Add Data dialog you can Shift-Click to select multiple files to add at once. You may be asked if you want to generate pyramids for each layer, click OK.
 
-![](../../assets/03_008.jpg)
+Repeat for the 2017 data, this time adding the files ending in "...B1" through "...B11". Save your project file.
 
-Next, click “Add Data...” again and navigate to “00_DATA\...\LC08_L1TP_025039_20170321_201703 29_01_T1” to add 2017 imagery. Shift-select TIFF files “...B1” through “...B11” and click “Add” (spectral bands 1 through 11).
+<!-- ![](../../assets/03_008.jpg) -->
 
+\[Remainder of assignment to be posted by EOD 10/9\]
+<!-- 
 ## COMPOSITE BANDS
 
 ![](../../assets/03_012.jpg)
@@ -176,7 +180,7 @@ Repeat the step for 2017 imagery, adding Landsat 8 bands 1 through 11 as Input R
 
 Right-click on 1987 layer and choose “Properties...” Click on the Source tab.
 
-> QUESTION 2.2: What is the projected coordinate system associated with the 1987 imagery? Considering the linear units of that coordinate system, what is the spatial resolution (cell size) of the image?
+<div class='question'><strong>Question 2</strong> What is the projected coordinate system associated with the 1987 imagery? Considering the linear units of that coordinate system, what is the spatial resolution (cell size) of the image?</div>
 
 ## NATURAL COLOR COMPOSITE
 
@@ -184,14 +188,14 @@ Right-click on 1987 layer and choose “Properties...” Click on the Source tab
 
 A natural or true-color image combines actual measurements of red, green and blue light. Temporarily toggle off the 2017 layer. Right- click on 1987 layer and choose “Properties...” Click on the Symbology tab.
 The Landsat 5 bands needed to create a Natural Color Composite are Band 1 Blue, Band 2 Green, and Band 3 Red. Set the Bands to its corresponding channels:
-• Red: Band_3
-• Green: Band_2
-• Blue: Band_1
+- Red: Band_3
+- Green: Band_2
+- Blue: Band_1
 Click “OK.” Rendering Natural Color Composite
 is the closest we can get to “true color” or “photo-like” image: trees are (sorta) green, snow and clouds are white, water is (sorta) blue, etc. Toggle the 2017 layer back on and render it also as a true-color image.
-QUESTION 2.3:
-Referring to the table on Page 3 of the document, how will you designate the bands in order to render a 2017 Natural Color Composite?
-Red: Green: Blue:
+
+<div class='question'><strong>Question 3</strong> Referring to the table on Page 3 of the document, how will you designate the bands in order to render a 2017 Natural Color Composite?
+Red: Green: Blue:</div>
 
 ![](../../assets/03_016.jpg)
 
@@ -301,8 +305,8 @@ Save the 2017 raster as “2017_cls.tif.” Right-click and choose “Properties
 Next we will generate a figure-ground maps for wetland category from the previously generated land cover rasters. Navigate to “Arc Toolbox > Spatial Analysis Tools > Reclass > Reclassify.” Reclassify tool chages the values in a raster image.
 
 Measure Change with Subtraction
-Set Input raster to “1987_cls.tif.” Set New values to (1) non-wetland, and (2) wetlands & water: • Commercial: 1
-• Residential: 1 • Wetlands: 2 • Water: 2
+Set Input raster to “1987_cls.tif.” Set New values to (1) non-wetland, and (2) wetlands & water: - Commercial: 1
+- Residential: 1 - Wetlands: 2 - Water: 2
 Save Output raster to “03_MyRasters” and name it “1987_reclass.tif.”
 
 Next, reclassify the 2017 image using the same settings and saving the output file to “03_MyRasters” as “2017_reclass.tif.”
@@ -330,9 +334,9 @@ Your formula should look like this:
 
 
 Open the Attribute Table of the resultant raster. It should have the following three values:
-• (-1) change from vegetation to non-vegetation (1-2)
-• (0) no change (either 2-2, or 1-1)
-• (1) change from non vegetation to vegetation (2-1)
+- (-1) change from vegetation to non-vegetation (1-2)
+- (0) no change (either 2-2, or 1-1)
+- (1) change from non vegetation to vegetation (2-1)
 Choose suitable colors for categories.
 
 ![](../../assets/03_062.jpg)
@@ -366,50 +370,56 @@ Save as type: dBase table, and save as “Wetland_ change.dbf . ”Import table 
  
 > In addition, compose one map composition showing the change only. Compile your maps and answers to the embedded questions into a single PDF file and upload to Canvas (with Part 3) by due date.
 
-## Part 3 | Terrain and Flow Mapping: Jordan River Valley
+## Terrain and Flow Mapping: Jordan River Valley
 
 Another important application of remote sensing is the production of digital elevation models (DEMs). DEM is a representation of a surface created from terrain’s elevation data. For this exercise we will be using ASTER imagery, which is a global database of DEM data.
+
 Any territory, regardless of its ground cover, vegetation, or man-made features, has characteristics and affordances that can be observed solely with DEM data. We will use DEM data to create terrain composites and expand on this further by conducting hydrologic calculations on the surface model such as flow directions and flow accumulations.
 
-### Setting Up
+### Setup
 
 Copy “AnalyzingData2_Part3.mpk” from the shared drive to “01_Project Files” and open map package. Your file should contain a natural color composite from September 2016, and a DEM raster (also known as the heightmap) covering the Sea of Galilee, Jordan River Valley, and the Dead Sea.
+
 “Jordan_DEM” layer is a mosaic of 2 tiles downloaded from EarthExplorer. Information about ASTER Global Digital Elevation Model can be accessed here.
-IMPORTANT:
-Before you work with a DEM, it should be projected so that your calculations will be as accurate as possible. It is critical to assign and use consistent coordinate system for all the datasets throughout this exercise. Both Landsat and DEM data in this package have already been assigned a projected coordinate system corresponding to its location - WGS_1984_UTM_Zone_36N. However, when you download data directly from Earth Explorer, you will notice that it comes “unprojected,” but with a defined WGS84 datum.
+
+IMPORTANT: Before you work with a DEM, it should be projected so that your calculations will be as accurate as possible. It is critical to assign and use consistent coordinate system for all the datasets throughout this exercise. Both Landsat and DEM data in this package have already been assigned a projected coordinate system corresponding to its location - WGS_1984_UTM_Zone_36N. However, when you download data directly from Earth Explorer, you will notice that it comes “unprojected,” but with a defined WGS84 datum.
+
 To project an unprojected DEM raster, search for “Project Raster” in the search box. Open the tool’s dialogue box. Fill in the form with DEM as the input raster, name the output raster dataset, and for the output coordinate system, select the desired system by navigating through the Projected Coordinate System folder. Click “OK.”
+
 Also, you will sometimes need to “stitch together” two or more DEM raster tiles (or even Landsat
 tiles) for your analysis. To merge multiple raster datasets together, search for “Mosaic to New Raster” tool in the search box. The input raster datasets are all the raster datasets you would like to mosaic together. You must set the pixel type and number of bands to match your existing inputs. To find out the bit depth and number of bands of your input rasters, right-click on the layer name in the ToC, and choose “Properties.” Then click on the Source tab and scroll down to find all the relevant raster dataset information.
 
-### Getting Started
-
 Navigate to menu item “File > Page and Print Setup...” Create a landscape layout at size 11x17” (tabloid). Navigate to “View/Layout View” and create a full-bleed viewport that completely covers the page. Set the scale to somewhere between 1:200,000 and 1:250,000. Pan to a portion of the map that has a good height distribution. When satisfied with the view, navigate to “Bookmarks/Create Bookmark...” and save the view.
+
 Next, we will crop all data exports to the size of the page. Navigate to “Geoprocessing/Environments... and under “Output Coordinates”, set the Output Coordinate System to “Same as Display.” Under Processing Extent, set the Extent to “Same as Display.”
 
 ### Terrain Composite
 
-CREATE CONTOURS:
+#### Create Contours
+
 Contours are lines on a map that connect points of equal elevation based on a vertical datum, usually sea level. To create contour lines in our current scene, navigate to “ArcToolbox > Spatial Analyst Tools > Surface > Contour.”
 
 ![](../../assets/03_070.jpg)
 
 Set Input Raster to “Jordan_DEM_utm36n.tif. ” Set Output to “02_MyShapes/Jordan_cnt100. shp,” and set Contour Interval to 100. Click “OK.”
-NOTE:
-You can access the “Environments...” form directly from Contour dialoge box and set the Processing Extent to “Same as Display.”
+
+NOTE: You can access the “Environments...” form directly from Contour dialoge box and set the Processing Extent to “Same as Display.”
+
 Consider changing symbology, e.g: choose “Quantities/Graduated Colors”, and set the value field to “CONTOUR.” Click “Classify” and choose “Equal Interval.” Choose the number of classes and a color ramp that satisfies you.
 
 ![](../../assets/03_072.jpg)
 
-#### CREATE HILLSHADE
+#### Create Hillshade
 
 ![](../../assets/03_074.jpg)
 
 Hillshade tool creates a shaded relief from a surface raster by considering the illumination source angle and shadows. By default, shadow and light are shades of gray associated with integers from 0 to 255 (increasing from black to white). Hillshading simulates the effect of the sun’s rays over the terrain and is one of the most popular techniques of cartographic relief depiction.
+
 Navigate to “ArcToolbox > Spatial Analyst Tools > Surface > Hillshade.” Set Input Raster to “Jordan_ DEM_utm36n.tif” and Output to “03_MyRasters/ Jordan_hillshd.tif.” Click “OK.”
 
 ![](../../assets/03_076.jpg)
 
-#### RASTER OUTPUTS
+#### Raster Outputs
 
 Turn off all layers except the DEM. Navigate to “File/Export Map...” Save as TIFF at 150 DPI, into your “04_Outputs” folder. Name the file “DEM_gradient.tif.” Next, open symbology tab of the DEM layer and choose another (non-grayscale) color ramp. Export as “DEM_color.tif.”
 Turn off all layers except the contours. Navigate to “File/Export Map...” Save as TIFF at 150 DPI, into your “04_Outputs” folder. Name the file “Contours100.tif.”
@@ -483,10 +493,10 @@ CREATE STREAM NETWORK:
 
 Next we will generate a new raster that will contain only the stream cells corresponding to our threshold.
 Navigate to “ArcToolbox > Spatial Analyst Tools > Map Algebra > Raster Calculator.”
-• Under the expressions, double- click “SetNull.”
-• Inside “(,)” double-click “FlowAcc.tif ”
-• Type “< 20200” (or whatever threshold value you’re using). Behind comma, type “1.”
-• The full equation should read: SetNull(“FlowAcc.tif ” < 20200, 1).
+- Under the expressions, double- click “SetNull.”
+- Inside “(,)” double-click “FlowAcc.tif ”
+- Type “< 20200” (or whatever threshold value you’re using). Behind comma, type “1.”
+- The full equation should read: SetNull(“FlowAcc.tif ” < 20200, 1).
 
 ![](../../assets/03_098.jpg)
 
@@ -510,4 +520,4 @@ Finally, we will use the flow direction raster to delineate watersheds, i.e. fin
 We can use the basins raster to create polygons as watershed boundaries. Navigate to “ArcToolbox > Conversion Tools > From Raster > Raster to Polygon.”
 Set Input raster to “Basins.tif” and save Output to “02_MyShp” as “Basins.shp.”
 
-> Assignment and Deliverable Format: Complete the exercise and create one 11 x 17 (tabloid, landscape orientation) Flow Map of the Jordan River Valley using at the minimum Stream Network and Basins layers. If desired, add one or more of the terrain output layers to complete your map. Compile all “Analyzing Data 2” deliverables (Part 2 & 3) into a single PDF file and upload to Canvas by due date.
+> Assignment and Deliverable Format: Complete the exercise and create one 11 x 17 (tabloid, landscape orientation) Flow Map of the Jordan River Valley using at the minimum Stream Network and Basins layers. If desired, add one or more of the terrain output layers to complete your map. Compile all “Analyzing Data 2” deliverables (Part 2 & 3) into a single PDF file and upload to Canvas by due date. -->
