@@ -2,7 +2,7 @@
 type: exercise
 number: 3
 title: Analyzing Raster Data
-date: 2020-09-22
+date: 2020-10-05
 slug: /exercises/03_analyzing-raster
 start: 2020-10-06 11:00 (EDT)
 end: 2020-10-27 09:00 (EDT)
@@ -38,7 +38,9 @@ Further, students should be able to:
 
 ### Deliverables
 
-**Exercise Questions**. Answer all of the questions in the exercise, explaining how you got your answer. Record your answers in a simple table like the one below, saved as a CSV file. Make sure your entire answer is inside the `A` column.
+#### Exercise Questions
+
+Answer all of the questions in the exercise, explaining how you got your answer. Record your answers in a simple table like the one below, saved as a CSV file. Make sure your entire answer is inside the `A` column.
 
 | Q | A |
 |---|---|
@@ -46,9 +48,23 @@ Further, students should be able to:
 |1.2| Raster and vector. |
 |...| ... |
 
-**Map**. As you work through the exercise you'll create several maps. For the assignment submission, arrange these in a single 11x17 layout, preferably in landscape orientation, saved as a PDF.
+#### Maps
 
-Name both files `yourUNI_exerciseN`, substituting your UNI, the current exercise number for N. Place them inside a `.zip` archive with the same name and submit through canvas.
+As you work through the exercise you'll create two map layouts:
+
+For the first section (*Change Mapping: Houston, TX*), create *a single 11x17 page layout*, portrait-oriented, with the following elements:
+
+1. Side-by-side comparisons of the 1987 and 2017 imagery as:
+   - A natural-color composite
+   - A false-color infrared composite
+   - A false-color urban composite
+2. A single map showing change in wetlands area
+
+For the second section (*Terrain and Flow Mapping: Jordan River Valley*) create a second layout showing the topography, stream network and basins in the valley using the layers created in the exercise.
+
+#### Submission Instructions
+
+Combine the two map layouts into a single PDF, then bundle this together with your exercise questions .CSV in a `.zip` archive and submit through canvas. All files in your submission should be named `yourUNI_exercise3`.
 
 ---
 <br/>
@@ -160,168 +176,168 @@ Your downloaded Landsat rasters should be unzipped and placed under `data_receiv
 
 ### Getting Started
 
-Create a new blank map in ArcMap. From the downloaded 1987 data, add the TIFF files ending in “...B1” through “...B7”. Using the Add Data dialog you can Shift-Click to select multiple files to add at once. You may be asked if you want to generate pyramids for each layer, click OK.
+Create a new blank map in ArcMap. From the downloaded 1987 data, add the TIFF files ending in “...B1” through “...B7”. In the Add Data dialog, you can Shift-Click to select multiple files to add at once. You may be asked if you want to generate pyramids for each layer, click OK. To stay organized, you can group multiple layers in the Table of Contents by first shift-selecting them, then right clicking and selecting "Group." Rename the group 1987.
 
 Repeat for the 2017 data, this time adding the files ending in "...B1" through "...B11". Save your project file.
 
-<!-- ![](../../assets/03_008.jpg) -->
+<!-- BEGIN 10/11 edits -->
 
-\[Remainder of assignment to be posted by EOD 10/9\]
-<!-- 
-## COMPOSITE BANDS
+### Composite Bands
 
-![](../../assets/03_012.jpg)
+In order to create the composite images that will allow us to classify land cover, we first need to combine the single-band raster files received from EarthExplorer into one multiband raster for each year in the analysis. Navigate to “ArcToolbox > Data Management Tools > Raster > Raster Processing > Composite Bands.”
 
-In order to create color composite images from individual layers, we need to combine single raster datasets into multiband raster datasets. Navigate to “ArcToolbox > Data Management Tools > Raster > Raster Processing > Composite Bands.”
+Using Input Rasters drop-down menu, add Landsat 5 bands 1 through 7. Save the output Raster in your `data_processed` folder as `1987-04-04_L5_multiband.tif` and click “OK.” When done, remove individual Landsat 5 bands from the scene.
 
-Using Input Rasters drop-down menu, add Landsat 5 bands 1 through 7. Save Output Raster in your “03_MyRasters” folder as “1987-04-04_L5_multiband.tif” and click “OK.” When done, remove individual Landsat 5 bands from the scene.
+![Composite Bands Dialog](../../assets/exercises/analyzing-raster/composite-bands.png)
 
-Repeat the step for 2017 imagery, adding Landsat 8 bands 1 through 11 as Input Rasters and saving Output Raster as “2017- 03-21_L8_multiband.tif.” When done, remove individual Landsat 8 bands from the scene.
+Repeat the step for 2017 imagery, adding Landsat 8 bands 1 through 11 as Input Rasters and saving Output Raster as `2017-03-21_L8_multiband.tif`. **Double-check that the input layers are sorted in the correct order**, so the bands within the result image will correspond to their orignal labels. If you need to reorder the list, use the up and down arrow buttons in the dialog. When you are finished, remove individual Landsat 8 bands from the scene.
 
 Right-click on 1987 layer and choose “Properties...” Click on the Source tab.
 
 <div class='question'><strong>Question 2</strong> What is the projected coordinate system associated with the 1987 imagery? Considering the linear units of that coordinate system, what is the spatial resolution (cell size) of the image?</div>
 
-## NATURAL COLOR COMPOSITE
+### Natural Color Composite
 
-![](../../assets/03_014.jpg)
+![Natural Color Composite Symbology](../../assets/exercises/analyzing-raster/raster-bands-symbology.png)
 
-A natural or true-color image combines actual measurements of red, green and blue light. Temporarily toggle off the 2017 layer. Right- click on 1987 layer and choose “Properties...” Click on the Symbology tab.
-The Landsat 5 bands needed to create a Natural Color Composite are Band 1 Blue, Band 2 Green, and Band 3 Red. Set the Bands to its corresponding channels:
-- Red: Band_3
-- Green: Band_2
-- Blue: Band_1
-Click “OK.” Rendering Natural Color Composite
-is the closest we can get to “true color” or “photo-like” image: trees are (sorta) green, snow and clouds are white, water is (sorta) blue, etc. Toggle the 2017 layer back on and render it also as a true-color image.
+A natural or "true-color" image combines actual measurements of red, green and blue light. Let's create a true-color image from the composite raster for 1987 (turn off the 2017 layer for now.)
 
-<div class='question'><strong>Question 3</strong> Referring to the table on Page 3 of the document, how will you designate the bands in order to render a 2017 Natural Color Composite?
-Red: Green: Blue:</div>
+Using the table above outlining the available bands for Landsat 5, we can confirm that red (Band 3), green (Band 2) and blue (Band 1) visible light are among the options. Under the Symbology tab of the 1987 composite raster, set each output color to the correct band and click OK.
 
-![](../../assets/03_016.jpg)
+A Natural Color Composite is the closest we can get to “true color” or “photo-like” image: trees are greenish, snow and clouds are white, water is blueish, etc. 
 
-## FALSE COLOR COMPOSITES
+<div class='question'><strong>Question 3</strong> Which three bands from the 2017 data will you need to use to produce a Natural Color Composite?</div>
 
-Natural color composites resemble most closely to how we experience the world from ground perspective. On the other hand, false-color composites, which incorporate wavelengths of light invisible to humans, may look deceiving, but they can reveal fascinating information and are much more useful in conducting analysis. One of the most common false color composite is the so-called Color Infrared, which uses Near Infrared Band (NIR) as Red, Red Band as Green, and Green Band as Blue. This is a traditional band combination useful in seeing changes in plant health. Plants reflect NIR and green light and absorb red. Because they reflect more NIR than green, plant-covered land appears deep red.
+Using your answer, toggle the 2017 layer back on and display it as a natural color composite.
 
-![](../../assets/03_018.jpg)
+![Natural Color Result Image](../../assets/exercises/analyzing-raster/natural-color-composite.png)
+
+### False-Color Composite
+
+Natural color composites show the world the same way it appears to the human eye. On the other hand, false-color composites, which incorporate wavelengths of light invisible to humans, may look deceiving, but they can reveal fascinating information and are much more useful in conducting analysis.
+
+Different false-color combinations are used for different purposes. One of the most common is Color Infrared, is used to reveal changes in plant health. It uses the Near Infrared Band (NIR) as Red, Red Band as Green, and Green Band as Blue. Because plants reflect NIR and green light and absorb red, plant-covered land appears deep red when rendered this way. Try setting the symbology for one of your multiband rasters to show a Color Infrared composite.
+
+![Color Infrared Result Image](../../assets/exercises/analyzing-raster/color-infrared-composite.png)
 
 Another common composite is so-called False Color Urban which, as the name suggests, is useful in visualizing urban environments. False color urban uses both of the SWIR bands, and red band. We will use this combination for our analysis.
-ADVICE:
-Go to “http://www.harrisgeospatial.com/Learn/Blogs/Blog-Details/TabId/2716/ArtMID/10198/ ArticleID/15691/The-Many-Band-Combinations-of-Landsat-8.aspx” and test few other band combinations before proceeding.
 
-## CREATING A SUBSET OF BANDS FOR THE CLASSIFICATION
+For more information on false-color composites, see [this page](http://www.harrisgeospatial.com/Learn/Blogs/Blog-Details/TabId/2716/ArtMID/10198/ArticleID/15691/The-Many-Band-Combinations-of-Landsat-8.aspx).
 
-![](../../assets/03_020.jpg)
+### Creating A Subset of Bands for Classification
 
-To use only the three desired bands from an existing dataset for the classification, we will create a new raster layers for them using the “Make Raster Layer” tool. Referring to the chart on the right, we will designate SWIR 2 Band as Red, SWIR 1 Band as Green, and Red Band as Blue.
+To use only the three desired bands from an existing dataset for the classification, we will create a new raster layers for them using the “Make Raster Layer” tool. Referring to the chart below, we will designate SWIR 2 Band as Red, SWIR 1 Band as Green, and Red Band as Blue.
+
+![False Color Chart](../../assets/exercises/analyzing-raster/false-color-chart.png)
+
 In addition, in order to save time and disk space, we will limit the geoprocessing extent to the smaller area of interest.
+
 Navigate to menu item “File > Page and Print Setup.” Uncheck the “Use Printer Paper Settings,” set the page size to “Tabloid” and Orientation to Landscape. Click “OK.”
+
 Go to Layout View by clicking on the Layout View button or clicking through “View > Layout View.” Right-click on data frame and click through “Distribute > Fit to Margins.”
 
-![](../../assets/03_022.jpg)
+![False Color Processing Extents](../../assets/exercises/analyzing-raster/false-color-processing-extents.png)
 
-Set the Map Scale to “1:100,000” and pan
-to northeastern part of the city. Navigate to menu item “Bookmarks > Create Bookmark...” Name the Bookmark “100K” and click “OK.”
+Set the Map Scale to “1:100,000” and pan to the northeastern part of the city. Navigate to menu item “Bookmarks > Create Bookmark...” Name the Bookmark “100K” and click “OK.”
+
 Navigate to “Geoprocessing > Environments...” Under Processing Extent, set the Extent to “Same as Display.” Click “OK.” With this setting, we limited all geoprocessing operations to the extent that we currently see on the screen.
-Next, navigate to “ArcToolbox > Layers and
-Table Views > Make Raster Layer.” On the Make
-Raster Layer tool dialog box, set the Input
-Raster to “1987-04-04_L5_multiband.tif.”
-Name the output raster “1987_L5-753.” In the
-Bands parameter, we will select the bands
-that we want to include in the new raster
-layer. In the case of 1987 imagery, those are Band 7 (SWIR 2), Band 5 (SWIR 2), and Band 3 (Red). Click “OK.”
 
-![](../../assets/03_024.jpg)
-![](../../assets/03_026.jpg)
+Next, navigate to “ArcToolbox > Layers and Table Views > Make Raster Layer.” On the Make Raster Layer tool dialog box, set the Input Raster to “1987-04-04_L5_multiband.tif.” Name the output raster “1987_L5-753.” In the Bands parameter, we will select the bands that we want to include in the new raster layer. In the case of 1987 imagery, those are Band 7 (SWIR 2), Band 5 (SWIR 2), and Band 3 (Red). Click “OK.”
+
+![Make Raster Layer Dialog](../../assets/exercises/analyzing-raster/range-adjusted-false-color-result.png)
+![Image Analysis Dialog](../../assets/exercises/analyzing-raster/image-analysis-dialog.png)
 
 We’ve now created a subset of bands for the classification without saving a new raster dataset on the hard disk. Repeat the operation for “2017-03-21_L8_multiband.tif” raster, using Bands 7, 6, and 4. Set the Output rater layer name to “2017_L8-764.”
 
 Toggle off the original multiband Imagery. Navigate to “Windows > Image Analysis.” On the Image Analysis window, turn on “DRA” (dynamic range adjustment) for both 2017 and 1987 subset layers. Dynamic range adjustment is a contrast stretch that is only stretches the pixel values within the display extent – not using all the pixels in the raster dataset. Next, set the stretch mode to “Std-dev.” Save your ArcMap Project.
 
-![](../../assets/03_028.jpg)
+![Range-Adjusted False Color Result](../../assets/exercises/analyzing-raster/range-adjusted-false-color-result.png)
 
 ### Image Classification
 
-## COLLECT TRAINING SAMPLES
+Now that we’re done with data exploration and preprocessing, we can start with Image Classification. The classification method we will use is called Supervised Classification, which employs our knowledge of the study area to achieve good results.
 
-Now that we’re done with data exploration and preprocessing, we can start with Image Classification. The classification method we will use is called Supervised Classification, which employs our knowledge of the study area to achieve good results. Supervised Classification uses the spectral signatures obtained from training samples to classify an image. With the assistance of the Image Classification toolbar, we can easily create training samples to represent the classes we want to extract.
+#### Collect Training Samples
 
-![](../../assets/03_030.jpg)
-![](../../assets/03_032.jpg)
-![](../../assets/03_034.jpg)
-![](../../assets/03_036.jpg)
+Supervised Classification uses the spectral signatures obtained from *training samples* to classify an image. With the assistance of the Image Classification toolbar, we can easily create training samples to represent the classes we want to extract.
 
-Click through “Customize > Toolbars > Image Classification.” Set the classification raster to “1987_ L5_753” and click on “Training Sample Manager” button. To collect training samples, we need to find areas with relatively uniform appearance on the image, and then use one of the drawing tools from the Image Classification toolbar to draw graphics to enclose them. Toggle off all other layers except the “1987_L5_753.”
+![Collect Training Samples Screenshot](../../assets/exercises/analyzing-raster/collect-training-samples.png)
+
+Click through “Customize > Toolbars > Image Classification.” Set the classification raster to “1987_L5_753” and click on “Training Sample Manager” button. To collect training samples, we need to find areas with relatively uniform appearance on the image, and then use one of the drawing tools from the Image Classification toolbar to draw graphics to enclose them. Toggle off all other layers except the “1987_L5_753.”
+
 Click the draw button. Notice that there is a choice of three drawing tools available: polygons, circles, and rectangles. In Data View, identify an area on the image that belongs to a known class. Use the drawing tool to define a training sample. The classes we will to identify are: Mixed Wetland, Residential, Commercial/Mixed, and Water.
 
-1. Classify Wetlands:
+##### Classify Wetlands
+
 Pan around the image and draw polygons on green regions. When you’ve generated enough different samples (make sure you don’t select any other color patterns), highlight all of the entries in the Training Sample Manager and click “Merge” . Name the Class “Mixed_Wetland” and give it a value of “1.”
 
-2. Classify Residential:
+##### Classify Residential
+
 Pan around image and draw polygons (or rectangles) on purple regions. Do not include major road and commercial areas around them. When done, highlight all entires in the Training Sample Manager except Wetlands and click “Merge” icon. Name the Class “Residential” and give it a value of “2.”
 
-3. Classify Commercial/Mixed:
+##### Classify Commercial/Mixed
+
 Pan around image and draw polygons on white, purple, and pink regions around major roads. When done, highlight all entries in the Training Sample Manager except Wetlands and Residential, and click “Merge” icon. Name the Class “Commercial/Mixed” and give it a value of “3.”
 
-4. Classify Water:
+##### Classify Water
+
 Pan around the image and draw polygons or rectangles on dark blue regions. Name the Class “Water and give it a value of “4.”
 
-## EVALUATE TRAINING SAMPLES
+![Collect Training Samples Results](../../assets/exercises/analyzing-raster/training-samples-results.png)
 
-![](../../assets/03_046.jpg)
+#### Evaluate Training Samples
 
-The manager provides you tools to evaluate the training samples—the Histograms tool ![](../../assets/03_038.jpg), the Scatterplots tool ![](../../assets/03_040.jpg), and the Statistics tool ![](../../assets/03_042.jpg). You can use these tools to explore the spectral characteristics of different areas. You can also use these tools to evaluate training samples to see if there is enough separation between the classes.
+The manager provides you tools to evaluate the training samples—the Histograms tool, the Scatterplots tool, and the Statistics tool. You can use these tools to explore the spectral characteristics of different areas. You can also use these tools to evaluate training samples to see if there is enough separation between the classes.
 
-CREATE SIGNATURE FILE:
+![Training Samples Histogram](../../assets/exercises/analyzing-raster/evaluate-training-samples.png)
+
+#### Create Signature File
+
 Once you determine the training samples are
-representative of the desired classes and are distinguishable from one another, a signature file can be created using the Create Signature File tool ![](../../assets/03_044.jpg). Save signature file as “1987_classes.gsg” in “03_ MyRasters.”
+representative of the desired classes and are distinguishable from one another, a signature file can be created using the Create Signature File tool. Save signature file as “1987_classes.gsg” in your processed data folder.
 
-APPLY CLASSIFICATION:
+#### Apply Classification
 
 We can use the Maximum Likelihood Classification tool to classify the image. This tool is based on the maximum likelihood probability theory. It assigns each pixel to one of the different classes based on the means and variances of the class signatures (stored in a signature file). The tool is also accessible from the Image Classification toolbar.
 
-![](../../assets/03_048.jpg)
-
 The Interactive Supervised Classification tool is another way to classify your image. This tool accelerates the maximum likelihood classification process. On the Image Classification toolbar, click through “Classification > Interactive Supervised Classification.”
 
-![](../../assets/03_050.jpg)
+![Classification Method](../../assets/exercises/analyzing-raster/image-classification-method.png)
 
 A new, classified image is now added to our scene. Go to layout view and get back to your “100K” extent by clicking through “Bookmarks > 100K.”
 
 If satisfied with results, right- click on the new image layer, and click through “Data > Export Data...”
 
+![Export Raster classification](../../assets/exercises/analyzing-raster/export-raster-classification.png)
+
 Set the Extent to “Data Frame.” Set Location to “03_MyRasters,” and name the file “1987_cls.tif.” Click “OK.” Choose suitable colors for categories.
 
-**Repeat image classification workflow for the 2017 image.**
+**Repeat the image classification workflow for the 2017 image.**
 
 Save the 2017 raster as “2017_cls.tif.” Right-click and choose “Properties...” Under Symbology, click “Import...” and choose “1987_cls.tif ” as a template. Click “OK.”
 
-![](../../assets/03_052.jpg)
-![](../../assets/03_054.jpg)
+![Export Raster classification](../../assets/exercises/analyzing-raster/classification-result-1.png)
 
 ### Wetland Figure-Ground
 
 Next we will generate a figure-ground maps for wetland category from the previously generated land cover rasters. Navigate to “Arc Toolbox > Spatial Analysis Tools > Reclass > Reclassify.” Reclassify tool chages the values in a raster image.
 
-Measure Change with Subtraction
-Set Input raster to “1987_cls.tif.” Set New values to (1) non-wetland, and (2) wetlands & water: - Commercial: 1
-- Residential: 1 - Wetlands: 2 - Water: 2
-Save Output raster to “03_MyRasters” and name it “1987_reclass.tif.”
+Set Input raster to “1987_cls.tif.” Set New values to (1) non-wetland, and (2) wetlands & water:
 
-Next, reclassify the 2017 image using the same settings and saving the output file to “03_MyRasters” as “2017_reclass.tif.”
+- Commercial: 1
+- Residential: 1
+- Wetlands: 2
+- Water: 2
 
-![](../../assets/03_056.jpg)
-![](../../assets/03_058.jpg)
+Save Output raster to your processed data folder and name it “1987_reclass.tif.”
+
+Next, reclassify the 2017 image using the same settings and saving the output file to your processed data folder as “2017_reclass.tif.”
+
+![Reclassify dialog and result](../../assets/exercises/analyzing-raster/reclassify.png)
 
 ### Measure Change with Subtraction
 
-## RASTER CALCULATOR
-
-![](../../assets/03_060.jpg)
-
-Out next step is to visualize and calculate the areas that have turned from wetlands to developed between 1987 and 2017.
-Navigate to “Arc Toolbox/Spatial Analyst Tools/Map Algebra/Raster Calculator.”
+Out next step is to visualize and calculate the areas that have turned from wetlands to developed between 1987 and 2017. Navigate to “Arc Toolbox/Spatial Analyst Tools/Map Algebra/Raster Calculator.”
 
 1. Double-click “2017_ reclass.tif”
 2. Click “-”
@@ -330,45 +346,42 @@ Navigate to “Arc Toolbox/Spatial Analyst Tools/Map Algebra/Raster Calculator.�
 Your formula should look like this:
 “2017_reclass.tif” - “1987_reclass.tif.” Save Output Raster to “MyRasters” as “Wetland_change.tif.”
 
-![](../../assets/03_064.jpg)
-
+![Raster calculator dialog](../../assets/exercises/analyzing-raster/raster-calculator.png)
 
 Open the Attribute Table of the resultant raster. It should have the following three values:
+
 - (-1) change from vegetation to non-vegetation (1-2)
 - (0) no change (either 2-2, or 1-1)
 - (1) change from non vegetation to vegetation (2-1)
 Choose suitable colors for categories.
 
-![](../../assets/03_062.jpg)
+![Raster calculator dialog](../../assets/exercises/analyzing-raster/change-result-table.png)
 
-## RASTER TO POLYGON
+![Raster calculator dialog](../../assets/exercises/analyzing-raster/change-result.png)
 
-![](../../assets/03_066.jpg)
+### Raster-To-Polygon
 
 Finally, we want to calculate change in areal units. To do that, we need to convert the resultant raster to vector and calculate surface area.
+
 Navigate to “Arc Toolbox/Conversion Tools/From Raster/Raster to Polygon.”
-Set Input raster to “Wetland_change.tif.” Set Field to “Value.” Save the Output polygon feature class to “02_ MyShapes” as “Wetland_change.shp.”
+
+Set Input raster to “Wetland_change.tif.” Set Field to “Value.” Save the Output polygon feature class to your processed data folder as `wetland_change.shp`.
+
 Do not simplify polygons. Click “OK.”
+
+![Raster to polygon](../../assets/exercises/analyzing-raster/raster-to-polygon.png)
 
 Open Attribute Table of the resultant layer. Notice that the original values are now stored in “GRIDCODE” field.
 
-Add new field, and name it “Area” of type “Double.” Calculate surface area of polygons in Acres. 
+Add new field, and name it “Area” of type “Double.” Calculate surface area of polygons in Acres.
 
-![](../../assets/03_068.jpg)
+![Summarize dialog](../../assets/exercises/analyzing-raster/summarize.png)
 
 Right-click on GRIDCODE and choose “Summarize.” Twill-down Area and choose “Sum.”
 
-Save as type: dBase table, and save as “Wetland_ change.dbf . ”Import table back into Workspace. Right-click on the table and choose “Open.” The Sum_Area for “-1” is the number of Acres that turned from wetlands to developed between 1987 and 2017.
+Save as type: dBase table, and save as `wetland_change.dbf`. Import table back into Workspace. Right-click on the table and choose “Open.” The Sum_Area for “-1” is the number of Acres that turned from wetlands to developed between 1987 and 2017.
 
-> QUESTION 2.4: How many acres of wetlands have been lost in your scene?
-
-> Assignment & Deliverable Format: Complete the exercise, answering the embedded questions. Prepare 3 (three) map compositions 11 x 17 inches (tabloid, landscape orientation) where left half of the map is the 1987 image and the right half is 2017 image:
-
-> 1. Natural Color Composite
-> 2. False Color Infrared
-> 3. False Color Urban
- 
-> In addition, compose one map composition showing the change only. Compile your maps and answers to the embedded questions into a single PDF file and upload to Canvas (with Part 3) by due date.
+<div class='question'><strong>Question 4</strong> How many acres of wetlands have been lost in your scene?</div>
 
 ## Terrain and Flow Mapping: Jordan River Valley
 
@@ -378,16 +391,17 @@ Any territory, regardless of its ground cover, vegetation, or man-made features,
 
 ### Setup
 
-Copy “AnalyzingData2_Part3.mpk” from the shared drive to “01_Project Files” and open map package. Your file should contain a natural color composite from September 2016, and a DEM raster (also known as the heightmap) covering the Sea of Galilee, Jordan River Valley, and the Dead Sea.
+Download the [data package]() for this portion of the exercise and set up a new project file. The package contains a natural color composite from September 2016, and a DEM raster (also known as the heightmap) covering the Sea of Galilee, Jordan River Valley, and the Dead Sea.
 
-“Jordan_DEM” layer is a mosaic of 2 tiles downloaded from EarthExplorer. Information about ASTER Global Digital Elevation Model can be accessed here.
+The `Jordan_DEM` layer is a mosaic of 2 tiles downloaded from EarthExplorer. Information about ASTER Global Digital Elevation Model can be accessed [here]().
 
 IMPORTANT: Before you work with a DEM, it should be projected so that your calculations will be as accurate as possible. It is critical to assign and use consistent coordinate system for all the datasets throughout this exercise. Both Landsat and DEM data in this package have already been assigned a projected coordinate system corresponding to its location - WGS_1984_UTM_Zone_36N. However, when you download data directly from Earth Explorer, you will notice that it comes “unprojected,” but with a defined WGS84 datum.
 
 To project an unprojected DEM raster, search for “Project Raster” in the search box. Open the tool’s dialogue box. Fill in the form with DEM as the input raster, name the output raster dataset, and for the output coordinate system, select the desired system by navigating through the Projected Coordinate System folder. Click “OK.”
 
-Also, you will sometimes need to “stitch together” two or more DEM raster tiles (or even Landsat
-tiles) for your analysis. To merge multiple raster datasets together, search for “Mosaic to New Raster” tool in the search box. The input raster datasets are all the raster datasets you would like to mosaic together. You must set the pixel type and number of bands to match your existing inputs. To find out the bit depth and number of bands of your input rasters, right-click on the layer name in the ToC, and choose “Properties.” Then click on the Source tab and scroll down to find all the relevant raster dataset information.
+Also, you will sometimes need to “stitch together” two or more DEM raster tiles (or even Landsat tiles) for your analysis. To merge multiple raster datasets together, search for “Mosaic to New Raster” tool in the search box. The input raster datasets are all the raster datasets you would like to mosaic together. You must set the pixel type and number of bands to match your existing inputs. To find out the bit depth and number of bands of your input rasters, right-click on the layer name in the ToC, and choose “Properties.” Then click on the Source tab and scroll down to find all the relevant raster dataset information.
+
+### Getting Started
 
 Navigate to menu item “File > Page and Print Setup...” Create a landscape layout at size 11x17” (tabloid). Navigate to “View/Layout View” and create a full-bleed viewport that completely covers the page. Set the scale to somewhere between 1:200,000 and 1:250,000. Pan to a portion of the map that has a good height distribution. When satisfied with the view, navigate to “Bookmarks/Create Bookmark...” and save the view.
 
@@ -399,40 +413,38 @@ Next, we will crop all data exports to the size of the page. Navigate to “Geop
 
 Contours are lines on a map that connect points of equal elevation based on a vertical datum, usually sea level. To create contour lines in our current scene, navigate to “ArcToolbox > Spatial Analyst Tools > Surface > Contour.”
 
-![](../../assets/03_070.jpg)
+![contour dialog](../../assets/exercises/analyzing-raster/contour-dialog.png)
 
-Set Input Raster to “Jordan_DEM_utm36n.tif. ” Set Output to “02_MyShapes/Jordan_cnt100. shp,” and set Contour Interval to 100. Click “OK.”
+Set Input Raster to “Jordan_DEM_utm36n.tif. ” Set the output to a new file called `kordan_cnt100.shp` in your processed data folder and set Contour Interval to 100. Click “OK.”
 
 NOTE: You can access the “Environments...” form directly from Contour dialoge box and set the Processing Extent to “Same as Display.”
 
 Consider changing symbology, e.g: choose “Quantities/Graduated Colors”, and set the value field to “CONTOUR.” Click “Classify” and choose “Equal Interval.” Choose the number of classes and a color ramp that satisfies you.
 
-![](../../assets/03_072.jpg)
+![contour result](../../assets/exercises/analyzing-raster/contour-result.png)
 
 #### Create Hillshade
 
-![](../../assets/03_074.jpg)
+![hillshade dialog](../../assets/exercises/analyzing-raster/hillshade-dialog.png)
 
 Hillshade tool creates a shaded relief from a surface raster by considering the illumination source angle and shadows. By default, shadow and light are shades of gray associated with integers from 0 to 255 (increasing from black to white). Hillshading simulates the effect of the sun’s rays over the terrain and is one of the most popular techniques of cartographic relief depiction.
 
-Navigate to “ArcToolbox > Spatial Analyst Tools > Surface > Hillshade.” Set Input Raster to “Jordan_ DEM_utm36n.tif” and Output to “03_MyRasters/ Jordan_hillshd.tif.” Click “OK.”
+Navigate to “ArcToolbox > Spatial Analyst Tools > Surface > Hillshade.” Set Input Raster to “Jordan_ DEM_utm36n.tif" and Output to “03_MyRasters/ Jordan_hillshd.tif.” Click “OK.”
 
-![](../../assets/03_076.jpg)
+![hillshade result](../../assets/exercises/analyzing-raster/hillshade-result.png)
 
 #### Raster Outputs
 
 Turn off all layers except the DEM. Navigate to “File/Export Map...” Save as TIFF at 150 DPI, into your “04_Outputs” folder. Name the file “DEM_gradient.tif.” Next, open symbology tab of the DEM layer and choose another (non-grayscale) color ramp. Export as “DEM_color.tif.”
+
 Turn off all layers except the contours. Navigate to “File/Export Map...” Save as TIFF at 150 DPI, into your “04_Outputs” folder. Name the file “Contours100.tif.”
 Turn off all layers except the hillshade. Navigate to “File/Export Map...” Save as TIFF at 150, into your “04_Outputs” folder. Name the file “Hillshade.tif.”
 Turn off all layers except the “Jordan_SEP_2016.tif.” Navigate “File/Export Map...” Save as TIFF at 150 DPI, into your “04_Outputs” folder. Name the file “Imagery.tif.”
 
-> Assignment & Deliverable Format: Complete the exercise and create one 11 x 17 (tabloid, landscape orientation) terrain composite map using at least 3 of the 5 raster outputs.
+TIP: Load output raster layers to Photoshop and use DEM_gradient as an Alpha Mask. Experiment with transparencies and blending modes:
 
-TIP:
-Load output raster layers to Photoshop and use DEM_gradient as an Alpha Mask. Experiment with transparencies and blending modes:
-
-![](../../assets/03_078.jpg)
-![](../../assets/03_079.jpg)
+![photoshop blending example 1](../../assets/exercises/analyzing-raster/photoshop-blend-example-1.png)
+![photoshop blending example 2](../../assets/exercises/analyzing-raster/photoshop-blend-example-2.png)
 
 ### Hydrology Analysis
 
@@ -442,82 +454,84 @@ Back in ArcMap, turn off all layers except DEM. Navigate to “ArcToolbox > Spat
 
 “Fill Sinks” function fills the sinks in a grid. If cells with higher elevation surround a cell, the water is trapped in that cell and cannot flow. This function modifies the elevation value to eliminate this problem.
 
-![](../../assets/03_080.jpg)
-![](../../assets/03_082.jpg)
+![fill sinks dialog](../../assets/exercises/analyzing-raster/fill-dialog.png)
 
 Double click on the Fill tool. Set “Jordan_DEM_utm36n” as the Input Surface Raster, and save the Output raster as “DEM_fill.tif” in your working directory. Click on “Environments...” and set the Output Coordinates to “Same as Display” and Processing Extent to “Default.” This time, we do not want to clip the output to display/paper size. Click “OK.”
 The resulting DEM should not be visibly different from the original version. Remove the original DEM from the scene.
 
 NOTE: If there are natural sinks in the data (e.g. 10m deep lake), you can use the “Z limit” to retain these natural sinks. For example, if you specify Z limit as 6m, the program will not fill any sinks that are deeper than 6m. The default is to fill all sinks (do not provide any input for Z limit).
 
-### FLOW DIRECTION
+#### Flow Direction
 
-![](../../assets/03_084.jpg)
+![flow direction dialog](../../assets/exercises/analyzing-raster/flow-direction.png)
 
 One of the keys to deriving hydrologic characteristics of a surface is the ability to determine the direction of flow from every cell in the raster. This is done with the Flow Direction tool.
 
 Double-click on Flow Direction tool. Set the filled DEM as the Input raster and save the Output raster to “03_MyRasters” as “FlowDirection.tif.”
 
-![](../../assets/03_086.jpg)
-
 Click on “Environments...” and set the Output Coordinate System to “Same as Input.” Click “OK” all the way out.
 
 A resulting raster with cells having one of the eight flow direction values (1,2,4,8,16,32,64,128) will be added to the map document. While the numbers are not intuitive, the map should be somewhat easy to read.
 
-![](../../assets/03_088.jpg)
+![flow direction dialog](../../assets/exercises/analyzing-raster/flow-dir-dialog.png)
 
 The table above shows how the values are set. For example, if the water would flow to the left (west) of the current processing cell, its flow direction would be coded as 16.
 
-![](../../assets/03_090.jpg)
+![flow direction result](../../assets/exercises/analyzing-raster/hydro-direction-result.png)
 
-FLOW ACCUMULATION:
+#### Flow Accumulation
 
 This function uses the flow direction grid to compute the total area (number of cells times the area of each cell) that is upslope and/or upstream of any given cell. Cells that lie on drainage networks have substantially higher values than cells on hill slopes.
 
 Double-click on Flow Accumulation tool. Set the “FlowDirection.tif” as the Input raster and save the Output raster to “03_MyRasters” as “FlowAcc.tif.” Click on “Environments...” and set the Output Coordinate System to “Same as Input” and Processing Extent to “Same as Display.” Click “OK” all the way out.
 
-![](../../assets/03_092.jpg)
+![flow accumulation result](../../assets/exercises/analyzing-raster/accumulation-result.png)
 
-STREAM THRESHOLD:
+#### Stream Threshold
+
 Because the flow accumulation gives the number of cells (or area) that drain to a particular cell, it can be used to define actual stream channels. We will empirically test this value until we find a split that satisfies us.
 Right-click on “FlowAcc.tiff” and choose “Properties.” Under Symbology tab choose “Classified” and click the “Classify...” button. Set the number of classes to 2 end experiment with break values.
 
-![](../../assets/03_094.jpg)
+![classification dialog](../../assets/exercises/analyzing-raster/classification-dialog.png)
 
 NOTE: It is assumed that a stream is formed when a certain area (threshold) drains to a point. If we assume an area of 25 km2 as the threshold to create a stream, the number of cells corresponding
 to this threshold area is 27,778 (25,000,000/(30*30)). You can start with that number as a test approximation for this area.
 
-CREATE STREAM NETWORK:
+#### Create Stream Network
 
-![](../../assets/03_096.jpg)
+![raster calculator, stream network](../../assets/exercises/analyzing-raster/raster-calculator.png)
 
 Next we will generate a new raster that will contain only the stream cells corresponding to our threshold.
+
 Navigate to “ArcToolbox > Spatial Analyst Tools > Map Algebra > Raster Calculator.”
+
 - Under the expressions, double- click “SetNull.”
 - Inside “(,)” double-click “FlowAcc.tif ”
 - Type “< 20200” (or whatever threshold value you’re using). Behind comma, type “1.”
 - The full equation should read: SetNull(“FlowAcc.tif ” < 20200, 1).
 
-![](../../assets/03_098.jpg)
+![stream to feature dialog](../../assets/exercises/analyzing-raster/stream-to-feature.png)
 
 This will create a calculation raster where all the cells with value greater than or equal to 20200 in FlowAcc.tif will have a value of 1, and all other cells are set to Null. Set Output raster to “03_ MyRasters/Streams.tif.” Click “OK.”
 
-### STREAM TO FEATURE
+#### Stream To Feature
 
-This tool converts stream raster to a polyline feature class. Set Input stream raster to “Streams.tif,” and Input flow direction raster to “FlowDirection.tif.” Save Output to “02_MyShp” as “StreamNetwork.shp.” Click “OK.”
+This tool converts stream raster to a polyline feature class. Set Input stream raster to “Streams.tif,” and Input flow direction raster to “FlowDirection.tif.” Save Output to your processed data folder as “StreamNetwork.shp.” Click “OK.”
 
-![](../../assets/03_100.jpg)
+![stream to feature result](../../assets/exercises/analyzing-raster/to-feature.png)
 
+#### Delineate Watersheds
 
-### DELINEATE WATERSHEDS
-
-![](../../assets/03_102.jpg)
+![basin calc dialog](../../assets/exercises/analyzing-raster/basin-dialog.png)
 
 Finally, we will use the flow direction raster to delineate watersheds, i.e. find a set of cells that belong to the same drainage basin. In “Hydrology” toolset, double-click Basin. Set the Input flow direction rater to “FlowDirection.tif” and save Output in “03_MyRasters as “Basins.tif.”
 
-![](../../assets/03_104.jpg)
+![basin raster-to-polygon dialog](../../assets/exercises/analyzing-raster/raster-to-polygon-basins.png)
 
 We can use the basins raster to create polygons as watershed boundaries. Navigate to “ArcToolbox > Conversion Tools > From Raster > Raster to Polygon.”
-Set Input raster to “Basins.tif” and save Output to “02_MyShp” as “Basins.shp.”
 
-> Assignment and Deliverable Format: Complete the exercise and create one 11 x 17 (tabloid, landscape orientation) Flow Map of the Jordan River Valley using at the minimum Stream Network and Basins layers. If desired, add one or more of the terrain output layers to complete your map. Compile all “Analyzing Data 2” deliverables (Part 2 & 3) into a single PDF file and upload to Canvas by due date. -->
+Set the Input raster to “Basins.tif” and save the Output to your processed data folder as “Basins.shp.”
+
+---
+
+Tutorial by Leah Meisterlin & Grga Basic. Adapted for online distribution by Carsten Rodin, Fall 2020.
