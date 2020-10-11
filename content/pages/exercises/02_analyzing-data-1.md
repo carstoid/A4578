@@ -1,7 +1,7 @@
 ---
 type: exercise
-number: 1
-title: Analyzing Data 1
+number: 2
+title: Analyzing Vector Data
 date: 2020-09-22
 slug: /exercises/02_analyzing-data
 start: 2020-09-22 11:00 (EDT)
@@ -199,4 +199,4 @@ Next, add one more field for the density (`trees_acre`) and use the Field Calcul
 
 ---
 
-Tutorial by Grga Basic, Fall 2018.
+Tutorial by Grga Basic, Fall 2018. Adapted for online distribution by Carsten Rodin, Fall 2020.

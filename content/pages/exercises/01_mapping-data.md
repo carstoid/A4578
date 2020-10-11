@@ -392,4 +392,4 @@ For your final map, you can either compose it completely in ArcMap, or experimen
 
 ---
 
-Tutorial by Carsten Rodin, Fall 2020. Adapted from materials by Leah Meisterlin and Grga Basic, Fall 2018.
+Tutorial by Leah Meisterlin & Grga Basic. Adapted for online distribution by Carsten Rodin, Fall 2020.
