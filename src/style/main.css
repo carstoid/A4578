@@ -101,10 +101,24 @@ ul {
 
 code {
   background: var(--off-white);
-  padding: 0.125em;
-  border-radius: 0.25em;
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.95em;
+}
+
+p code {
+  padding: 0.125em;
+  border-radius: 0.25em;
+}
+
+pre code {
+  background: #f4f4f4;
+  display: block;
+  padding: 0em;
+  line-height: 1.25em;
+}
+
+pre {
+  margin-bottom: 1em;
 }
 
 .tip {
