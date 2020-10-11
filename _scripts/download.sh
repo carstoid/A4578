@@ -6,7 +6,7 @@ ASSIGNMENT_WORKING_PATH="~/Desktop/grading/20200927"
 # get assignments from google drive folder 
 rclone copy -P --drive-shared-with-me $ASSIGNMENT_PATH $ASSIGNMENT_WORKING_PATH
 
-# unzip everything
+# unzip everything that was in a .rar folder
 for f in $ASSIGNMENT_WORKING_PATH/*.rar
 do
   unrar e $f

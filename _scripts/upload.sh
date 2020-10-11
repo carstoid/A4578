@@ -1,0 +1,1 @@
+rclone copy -P --drive-shared-with-me ./assignments_split "gdrive-ccr2139:/GIS_Fall2020_InstructorsOnly/Student Work (Comments with Grades)/01_MappingData/3_4_Arch_UD/"
