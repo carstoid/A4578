@@ -222,7 +222,7 @@ Different false-color combinations are used for different purposes. One of the m
 
 Another common composite is so-called False Color Urban which, as the name suggests, is useful in visualizing urban environments. False color urban uses both of the SWIR bands, and red band. We will use this combination for our analysis.
 
-For more information on false-color composites, see [this page](http://www.harrisgeospatial.com/Learn/Blogs/Blog-Details/TabId/2716/ArtMID/10198/ArticleID/15691/The-Many-Band-Combinations-of-Landsat-8.aspx).
+For more information on false-color composites, see [this page](https://www.l3harrisgeospatial.com/Learn/Blogs/Blog-Details/ArtMID/10198/ArticleID/15691/The-Many-Band-Combinations-of-Landsat-8).
 
 ### Creating A Subset of Bands for Classification
 
@@ -391,9 +391,11 @@ Any territory, regardless of its ground cover, vegetation, or man-made features,
 
 ### Setup
 
-Download the [data package]() for this portion of the exercise and set up a new project file. The package contains a natural color composite from September 2016, and a DEM raster (also known as the heightmap) covering the Sea of Galilee, Jordan River Valley, and the Dead Sea.
+Download the [data package](/downloads/terrain_flow_mapping.zip) for this portion of the exercise and set up a new project file. The package contains a natural color composite from September 2016, and a DEM raster (also known as the heightmap) covering the Sea of Galilee, Jordan River Valley, and the Dead Sea.
 
-The `Jordan_DEM` layer is a mosaic of 2 tiles downloaded from EarthExplorer. Information about ASTER Global Digital Elevation Model can be accessed [here]().
+The `jordan_dem` layer is a mosaic of 2 tiles downloaded from EarthExplorer. Information about ASTER Global Digital Elevation Model can be accessed [here](https://earthdata.nasa.gov/learn/articles/new-aster-gdem).
+
+<!-- If you want to download DEM rasters yourself in the future, they can be obtained via NASA's EarthData search platform (https://search.earthdata.nasa.gov/). Although the interface is slightly different than USGS EarthExplorer, the basic process of setting geographic/temporal extents, filtering by metadata, and selecting scenes to download by footprint is similar.-->
 
 IMPORTANT: Before you work with a DEM, it should be projected so that your calculations will be as accurate as possible. It is critical to assign and use consistent coordinate system for all the datasets throughout this exercise. Both Landsat and DEM data in this package have already been assigned a projected coordinate system corresponding to its location - WGS_1984_UTM_Zone_36N. However, when you download data directly from Earth Explorer, you will notice that it comes “unprojected,” but with a defined WGS84 datum.
 
@@ -415,7 +417,7 @@ Contours are lines on a map that connect points of equal elevation based on a ve
 
 ![contour dialog](../../assets/exercises/analyzing-raster/contour-dialog.png)
 
-Set Input Raster to “Jordan_DEM_utm36n.tif. ” Set the output to a new file called `kordan_cnt100.shp` in your processed data folder and set Contour Interval to 100. Click “OK.”
+Set Input Raster to `jordan_dem_utm36n.tif`. Set the output to a new file called `kordan_cnt100.shp` in your processed data folder and set Contour Interval to 100. Click “OK.”
 
 NOTE: You can access the “Environments...” form directly from Contour dialoge box and set the Processing Extent to “Same as Display.”
 
