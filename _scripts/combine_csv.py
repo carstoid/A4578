@@ -7,6 +7,7 @@ with open('../all_2.csv', 'w+') as target_file:
   writer = csv.writer(target_file)
 
   for f in glob.glob('*.csv'):
+    print(f)
     uni = f.replace('_exercise1.csv', '')
     answers = []
     answers.append(uni)

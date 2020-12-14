@@ -3,9 +3,9 @@ import pandas as pd
 
 #with open('../all_2.csv', 'w+') as target_file:
 
-INPUT_FILE='./exercise_1.xlsx'
-INPUT_SHEET='exercise_1'
-ASSIGNMENT_NAME='Exercise 1'
+INPUT_FILE='./grades.xlsx'
+INPUT_SHEET='exercise_2'
+ASSIGNMENT_NAME='Exercise 2'
 
 grades = pd.read_excel(INPUT_FILE, sheet_name=INPUT_SHEET)
 
@@ -20,7 +20,8 @@ for i, row in grades.iterrows():
 
 Grades are done for {assignment}, please see the notes below and the attached PDF.
 
-Your score was: {score}/10. {comment}
+Your score was: {score}/10. 
+{comment}
 
 Please let me know if you have any questions,
 Carsten
