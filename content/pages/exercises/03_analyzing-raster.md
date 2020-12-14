@@ -141,7 +141,7 @@ In the next tab we'll filter our results even further. Since we need a cloudless
 
 #### Results
 
-Now it's time to see the results. On the left you'll see a list of Landsat captures matching the search criteria. You can preview their location on the map by clicking the footprint icon, or preview the image contents. Each capture, which is called a "scene," is organized by "path" and "row" which defines its position within the grid system used to organize Landsat data. We'll use the scene at Path 25, Row 39 on **4/4/1987** for our analysis.
+Now it's time to see the results. On the left you'll see a list of Landsat captures matching the search criteria. You can preview their location on the map by clicking the footprint icon, or preview the image contents. Each capture, which is called a "scene," is organized by "path" and "row" which defines its position within the grid system used to organize Landsat data. We'll use the scene at Path 25, Row 39 on **4/4/1987** for our analysis. Note: please ignore the date shown in the image below – this is for demonstration purposes only.
 
 Download the "Level-1 GeoTIFF Data Product" for that scene, and save it to your project folder.
 
